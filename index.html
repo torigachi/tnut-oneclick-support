@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONE CLICK – ONE SUPPORT | TNUT Information Hub</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+            color: #1f2937;
+        }
+        .glass { background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 1rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.65); box-shadow: 0 12px 35px 0 rgba(31, 38, 135, 0.15); }
+        .glass-btn { background: rgba(255, 255, 255, 0.45); border: 1px solid rgba(255, 255, 255, 0.6); backdrop-filter: blur(6px); transition: all 0.2s ease; }
+        .glass-btn:hover { background: rgba(255, 255, 255, 0.8); }
+        .glass-btn.active { background: #2563eb; color: white; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.8); }
+        .loader { border: 4px solid rgba(255, 255, 255, 0.3); border-left-color: #2563eb; border-radius: 50%; width: 36px; height: 36px; animation: spin 0.8s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="pb-12">
+
+    <!-- NAV HEADER -->
+    <nav class="glass sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="filterCategory('Tất cả')">
+                    <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md border border-blue-200">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <circle cx="50" cy="50" r="46" fill="#1e3a8a" />
+                            <circle cx="50" cy="50" r="40" fill="#ffffff" />
+                            <circle cx="50" cy="50" r="34" fill="none" stroke="#dc2626" stroke-width="4" />
+                            <polygon points="50,22 57,38 74,38 60,49 65,65 50,55 35,65 40,49 26,38 43,38" fill="#2563eb" />
+                            <circle cx="50" cy="50" r="8" fill="#dc2626" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight text-blue-900 tracking-tight">ONE CLICK</h1>
+                        <p class="text-[11px] text-blue-700 font-semibold tracking-wider">ONE SUPPORT - TNUT</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-2 flex-1 max-w-md mx-8">
+                    <div class="relative text-gray-600 focus-within:text-gray-800 flex-1">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-500"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchInput" class="glass w-full py-2 pl-10 pr-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-500" placeholder="Tìm kiếm thông báo, dịch vụ...">
+                    </div>
+                    <button onclick="loadData()" class="glass-btn px-3 py-2 rounded-full text-blue-600 hover:bg-blue-100 transition shadow-sm flex-shrink-0" title="Cập nhật dữ liệu">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+
+                <div>
+                    <button onclick="toggleBookmarkView()" class="glass-btn px-4 py-2 rounded-full font-medium text-sm flex items-center gap-2 shadow-sm text-gray-800">
+                        <i class="fas fa-heart text-red-500"></i>
+                        <span class="hidden sm:inline">Đã lưu</span>
+                        <span id="bookmarkCount" class="bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE SEARCH -->
+    <div class="md:hidden px-4 pt-4 flex items-center gap-2">
+        <div class="relative text-gray-600 flex-1">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><i class="fas fa-search"></i></span>
+            <input type="text" id="searchInputMobile" class="glass w-full py-2 pl-10 pr-4 rounded-full focus:outline-none text-sm" placeholder="Tìm kiếm thông báo...">
+        </div>
+        <button onclick="loadData()" class="glass-btn px-3.5 py-2 rounded-full text-blue-600 shadow-sm">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center" id="heroSection">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-gray-800 tracking-tight">Một lần truy cập – Nhận đúng hỗ trợ</h2>
+        <p class="text-gray-700 max-w-2xl mx-auto mb-8 text-sm md:text-base leading-relaxed">Điểm tập trung thông tin dịch vụ, học vụ và thông báo chính thức từ Trường Đại học Kỹ thuật Công nghiệp (TNUT).</p>
+        <div class="flex flex-wrap justify-center gap-2.5 mb-8" id="categoryFilters"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 flex justify-between items-center">
+        <h3 class="text-lg md:text-xl font-bold text-gray-800" id="sectionTitle">Tất cả thông tin mới nhất</h3>
+        <select id="sourceFilter" class="glass px-3 py-1.5 rounded-lg text-xs md:text-sm outline-none cursor-pointer text-gray-700 font-medium">
+            <option value="Tất cả">Tất cả nguồn</option>
+            <option value="Website">Website Trường</option>
+            <option value="Portal">Portal Sinh viên</option>
+            <option value="Facebook">Facebook Fanpage</option>
+        </select>
+    </div>
+
+    <!-- GRID TIN TỨC -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="loadingState" class="text-center py-16">
+            <div class="loader mb-3"></div>
+            <p class="text-gray-600 font-medium text-xs md:text-sm">Đang tải danh sách thông báo...</p>
+        </div>
+
+        <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+        
+        <div id="emptyState" class="hidden text-center py-16">
+            <i class="fas fa-folder-open text-5xl text-gray-400 mb-3 opacity-60"></i>
+            <h3 class="text-base font-semibold text-gray-700">Không tìm thấy bài viết phù hợp</h3>
+        </div>
+    </div>
+
+    <!-- MODAL HIỂN THỊ MÃ QR -->
+    <div id="qrModal" class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-gray-900/40 backdrop-blur-sm p-4">
+        <div class="glass-card p-6 max-w-sm w-full relative text-center bg-white/85 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-700 text-lg transition"><i class="fas fa-times"></i></button>
+            <h3 class="text-base font-bold mb-1 text-gray-800">Mã QR Bài viết</h3>
+            <p id="qrNoticeTitle" class="text-xs text-blue-600 font-medium mb-4 line-clamp-2 px-1"></p>
+            
+            <div class="bg-white p-3.5 rounded-xl inline-block shadow-inner mb-4 border border-gray-100">
+                <div id="qrcode" class="mx-auto flex justify-center"></div>
+            </div>
+            
+            <p class="text-[11px] text-gray-500 mb-4"><i class="fas fa-camera mr-1"></i> Quét bằng Camera điện thoại hoặc ứng dụng Zalo</p>
+            
+            <a id="qrLinkToOriginal" href="#" target="_blank" class="block w-full py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow text-xs md:text-sm">
+                <i class="fas fa-external-link-alt mr-1.5"></i> Mở bài viết gốc
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // LIÊN KẾT ĐÃ ĐƯỢC CẬP NHẬT THÀNH ĐƯỜNG DẪN CHI TIẾT (DEEP LINK)
+        const embeddedNewsData = [
+            {
+                id: "tnut_01",
+                title: "Lịch thực hành Đại cương Kỹ thuật dành cho sinh viên khóa K62",
+                category: "Học tập",
+                source: "Website",
+                date: "05/11/2026",
+                summary: "Phòng Đào tạo thông báo lịch phân công ca học thực hành môn Đại cương Kỹ thuật tại xưởng thực hành cho sinh viên các lớp K62...",
+                originalUrl: "https://tnut.edu.vn/tin-tuc-su-kien/lich-thuc-hanh-dai-cuong-ky-thuat-k62"
+            },
+            {
+                id: "tnut_02",
+                title: "Hướng dẫn làm thủ tục vay vốn tín dụng sinh viên Học kỳ I năm học 2026-2027",
+                category: "Tài chính",
+                source: "Portal",
+                date: "04/11/2026",
+                summary: "Phòng Công tác Sinh viên (CTSV) hướng dẫn quy trình, mẫu đơn và mốc thời gian tiếp nhận hồ sơ xin giấy xác nhận vay vốn ngân hàng chính sách...",
+                originalUrl: "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1024"
+            },
+            {
+                id: "tnut_03",
+                title: "Đoàn trường thông báo hội thi văn nghệ chào mừng Ngày Nhà giáo Việt Nam 20/11",
+                category: "Thông báo chung",
+                source: "Facebook",
+                date: "03/11/2026",
+                summary: "Kế hoạch tổ chức chuỗi hoạt động văn hóa, thể thao và hội thi văn nghệ truyền thống giữa liên chi đoàn các khoa trong toàn trường...",
+                originalUrl: "https://www.facebook.com/Truongdhktcn/posts/pfbid02X4aBbCdEfGhIjKl"
+            },
+            {
+                id: "tnut_04",
+                title: "Gia hạn mượn trả giáo trình và tài liệu tham khảo đợt 1 năm học 2026",
+                category: "Thư viện",
+                source: "Website",
+                date: "28/10/2026",
+                summary: "Trung tâm Thông tin - Thư viện mở tính năng gia hạn tài liệu trực tuyến trên cổng thư viện số dành cho sinh viên đăng ký trả sách...",
+                originalUrl: "https://tnut.edu.vn/thu-vien/thong-bao-gia-han-tai-lieu-2026"
+            },
+            {
+                id: "tnut_05",
+                title: "Tuyển chọn sinh viên thực tập dự án thực tế tại Viện Nghiên cứu RIAT",
+                category: "Hướng nghiệp",
+                source: "Website",
+                date: "20/10/2026",
+                summary: "Viện Nghiên cứu Phát triển Công nghệ cao trong Kỹ thuật Công nghiệp thông báo chương trình thực tập dành cho sinh viên ngành Tự động hóa & Cơ khí...",
+                originalUrl: "https://tnut.edu.vn/riat/thong-bao-tuyen-sinh-vien-thuc-tap"
+            },
+            {
+                id: "tnut_06",
+                title: "Thông báo công khai điểm rèn luyện đợt 1 và thời gian nhận phản hồi phúc khảo",
+                category: "Công tác SV",
+                source: "Portal",
+                date: "15/10/2026",
+                summary: "Sinh viên tra cứu kết quả đánh giá điểm rèn luyện cá nhân trên Portal. Mọi thắc mắc gửi về Cố vấn học tập trước ngày quy định...",
+                originalUrl: "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1018"
+            }
+        ];
+
+        let newsData = [];
+        let currentCategory = 'Tất cả';
+        let currentSearch = '';
+        let currentSource = 'Tất cả';
+        let showOnlyBookmarks = false;
+        let bookmarks = JSON.parse(localStorage.getItem('tnut_bookmarks')) || [];
+        const categories = ['Tất cả', 'Học tập', 'Tài chính', 'Thư viện', 'Hướng nghiệp', 'Công tác SV', 'Thông báo chung'];
+
+        async function loadData() {
+            document.getElementById('loadingState').classList.remove('hidden');
+            document.getElementById('newsGrid').classList.add('hidden');
+            document.getElementById('emptyState').classList.add('hidden');
+
+            try {
+                const res = await fetch('news.json');
+                if (res.ok) {
+                    newsData = await res.json();
+                } else {
+                    newsData = embeddedNewsData;
+                }
+            } catch (e) {
+                newsData = embeddedNewsData;
+            }
+
+            setTimeout(() => {
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('newsGrid').classList.remove('hidden');
+                renderCategoryFilters();
+                updateBookmarkCount();
+                renderNews();
+            }, 300);
+        }
+
+        function init() {
+            loadData();
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+            document.getElementById('searchInputMobile').addEventListener('input', handleSearch);
+            document.getElementById('sourceFilter').addEventListener('change', (e) => {
+                currentSource = e.target.value;
+                renderNews();
+            });
+        }
+
+        function renderCategoryFilters() {
+            const container = document.getElementById('categoryFilters');
+            container.innerHTML = '';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `glass-btn px-3.5 py-1.5 rounded-full font-medium text-xs md:text-sm transition-all ${currentCategory === cat && !showOnlyBookmarks ? 'active' : 'text-gray-700'}`;
+                btn.textContent = cat;
+                btn.onclick = () => filterCategory(cat);
+                container.appendChild(btn);
+            });
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat; 
+            showOnlyBookmarks = false;
+            currentSearch = ''; 
+            document.getElementById('searchInput').value = ''; 
+            document.getElementById('searchInputMobile').value = '';
+            currentSource = 'Tất cả'; 
+            document.getElementById('sourceFilter').value = 'Tất cả';
+            document.getElementById('sectionTitle').textContent = cat === 'Tất cả' ? 'Tất cả thông tin mới nhất' : `Danh mục: ${cat}`;
+            document.getElementById('heroSection').style.display = 'block';
+            renderCategoryFilters(); 
+            renderNews();
+        }
+
+        function toggleBookmarkView() {
+            showOnlyBookmarks = !showOnlyBookmarks;
+            if (showOnlyBookmarks) {
+                document.getElementById('sectionTitle').textContent = 'Danh sách thông báo đã lưu';
+                document.getElementById('heroSection').style.display = 'none';
+                document.querySelectorAll('#categoryFilters button').forEach(btn => btn.classList.remove('active'));
+            } else { 
+                filterCategory('Tất cả'); 
+            }
+            renderNews();
+        }
+
+        function handleSearch(e) {
+            currentSearch = e.target.value.toLowerCase();
+            if (e.target.id === 'searchInput') document.getElementById('searchInputMobile').value = currentSearch;
+            else document.getElementById('searchInput').value = currentSearch;
+            renderNews();
+        }
+
+        function getSourceStyle(source) {
+            switch(source) {
+                case 'Facebook': return { bg: 'bg-blue-100', text: 'text-blue-700', icon: 'fab fa-facebook' };
+                case 'Portal': return { bg: 'bg-purple-100', text: 'text-purple-700', icon: 'fas fa-graduation-cap' };
+                case 'Website': return { bg: 'bg-emerald-100', text: 'text-emerald-700', icon: 'fas fa-globe' };
+                default: return { bg: 'bg-gray-100', text: 'text-gray-700', icon: 'fas fa-info-circle' };
+            }
+        }
+
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            const emptyState = document.getElementById('emptyState');
+            grid.innerHTML = '';
+
+            let filtered = newsData.filter(item => {
+                const matchCat = currentCategory === 'Tất cả' || item.category === currentCategory;
+                const matchSrc = currentSource === 'Tất cả' || item.source === currentSource;
+                const matchSearch = item.title.toLowerCase().includes(currentSearch) || item.summary.toLowerCase().includes(currentSearch);
+                const matchBm = !showOnlyBookmarks || bookmarks.includes(item.id);
+                return matchCat && matchSrc && matchSearch && matchBm;
+            });
+
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                grid.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+            }
+
+            filtered.forEach(item => {
+                const isBookmarked = bookmarks.includes(item.id);
+                const s = getSourceStyle(item.source);
+                const card = document.createElement('div');
+                card.className = 'glass-card p-5 md:p-6 flex flex-col h-full group';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="${s.bg} ${s.text} text-[11px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5"><i class="${s.icon}"></i> ${item.source}</span>
+                        <div class="flex gap-1.5 text-gray-400">
+                            <button onclick="openQRModal('${item.originalUrl}', '${item.title.replace(/'/g, "\\'")}')" class="hover:text-blue-600 transition p-1.5" title="Tạo mã QR">
+                                <i class="fas fa-qrcode text-base"></i>
+                            </button>
+                            <button onclick="toggleBookmark('${item.id}')" class="transition p-1.5" title="Lưu tin"><i class="fas fa-heart text-base ${isBookmarked ? 'text-red-500' : 'hover:text-red-500'}"></i></button>
+                        </div>
+                    </div>
+                    <div class="text-[11px] text-gray-500 mb-2 font-medium"><i class="far fa-calendar-alt mr-1"></i> ${item.date} • <span class="text-blue-700 font-semibold">${item.category}</span></div>
+                    <h4 class="text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${item.title}</h4>
+                    <p class="text-xs md:text-sm text-gray-600 mb-5 flex-grow line-clamp-3 leading-relaxed">${item.summary}</p>
+                    <div class="mt-auto pt-3.5 border-t border-gray-200/60 flex justify-between items-center">
+                        <a href="${item.originalUrl}" target="_blank" class="inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-800 transition">Mở bài viết gốc <i class="fas fa-arrow-right ml-1 text-[10px]"></i></a>
+                        <button onclick="openQRModal('${item.originalUrl}', '${item.title.replace(/'/g, "\\'")}')" class="glass-btn px-2.5 py-1 rounded-md text-xs text-blue-700 font-medium hover:bg-blue-100 flex items-center gap-1">
+                            <i class="fas fa-qrcode"></i> QR
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function toggleBookmark(id) {
+            const idx = bookmarks.indexOf(id);
+            if (idx > -1) bookmarks.splice(idx, 1);
+            else bookmarks.push(id);
+            localStorage.setItem('tnut_bookmarks', JSON.stringify(bookmarks));
+            updateBookmarkCount(); 
+            renderNews();
+        }
+
+        function updateBookmarkCount() { 
+            document.getElementById('bookmarkCount').textContent = bookmarks.length; 
+        }
+
+        let qrcode = null;
+        function openQRModal(url, title) {
+            document.getElementById('qrLinkToOriginal').href = url;
+            document.getElementById('qrNoticeTitle').textContent = title || url;
+            const container = document.getElementById('qrcode');
+            container.innerHTML = '';
+            qrcode = new QRCode(container, { 
+                text: url, 
+                width: 160, 
+                height: 160, 
+                colorDark : "#1e3a8a", 
+                colorLight : "#ffffff", 
+                correctLevel : QRCode.CorrectLevel.H 
+            });
+            document.getElementById('qrModal').classList.remove('hidden');
+        }
+
+        function closeModal() { 
+            document.getElementById('qrModal').classList.add('hidden'); 
+        }
+
+        document.getElementById('qrModal').addEventListener('click', function(e) { 
+            if (e.target === this) closeModal(); 
+        });
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -42,9 +42,8 @@ def crawl_tnut():
         except Exception as e:
             print(f"Không thể cào dữ liệu từ {target_url}: {e}")
 
-    # Danh sách dữ liệu dự phòng chuẩn nếu bị chặn IP
+    # Danh sách dữ liệu dự phòng nếu máy chủ cloud bị chặn IP
     if not news_list:
-        print("Tự động dùng danh sách tin tức dự phòng có liên kết chi tiết...")
         news_list = [
             {
                 "id": "auto_tnut_1",
@@ -61,17 +60,17 @@ def crawl_tnut():
                 "category": "Tài chính",
                 "source": "Portal",
                 "date": "Hôm qua",
-                "summary": "Phòng Công tác Sinh viên hướng dẫn chi tiết quy trình, mẫu đơn xin giấy xác nhận vay vốn ngân hàng chính sách...",
+                "summary": "Phòng Kế hoạch Tài chính phối hợp phòng CTSV hướng dẫn xin giấy xác nhận vay vốn ngân hàng chính sách...",
                 "originalUrl": "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1024"
             },
             {
                 "id": "auto_tnut_3",
                 "title": "Đoàn trường thông báo hội thi văn nghệ chào mừng Ngày Nhà giáo Việt Nam 20/11",
-                "category": "Thông báo chung",
-                "source": "Facebook",
-                "date": "2 ngày trước",
-                "summary": "Kế hoạch tổ chức chuỗi hoạt động văn hóa, thể thao và hội thi văn nghệ truyền thống giữa liên chi đoàn các khoa...",
-                "originalUrl": "https://www.facebook.com/Truongdhktcn/posts/pfbid02X4aBbCdEfGhIjKl"
+                category: "Thông báo chung",
+                source: "Facebook",
+                date: "2 ngày trước",
+                summary: "Kế hoạch tổ chức chuỗi hoạt động văn hóa, thể thao và hội thi văn nghệ truyền thống giữa liên chi đoàn các khoa...",
+                originalUrl: "https://www.facebook.com/Truongdhktcn/posts/pfbid02X4aBbCdEfGhIjKl"
             }
         ]
 

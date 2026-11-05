@@ -26,7 +26,7 @@
     <nav class="glass sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- LOGO TNUT SVG -->
+                <!-- LOGO TNUT -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="switchTab('news')">
                     <div class="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md border border-blue-200">
                         <svg viewBox="0 0 100 100" class="w-full h-full">
@@ -47,20 +47,20 @@
                 <div class="hidden md:flex items-center gap-2 flex-1 max-w-md mx-8">
                     <div class="relative text-gray-600 focus-within:text-gray-800 flex-1">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-500"><i class="fas fa-search"></i></span>
-                        <input type="text" id="searchInput" class="glass w-full py-2 pl-10 pr-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-500" placeholder="Tìm kiếm thông báo, dịch vụ...">
+                        <input type="text" id="searchInput" class="glass w-full py-2 pl-10 pr-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-500" placeholder="Tìm kiếm thông báo, dịch vụ, CLB...">
                     </div>
                     <button onclick="fetchLatestNewsInBackground(true)" class="glass-btn px-3 py-2 rounded-full text-blue-600 hover:bg-blue-100 transition shadow-sm flex-shrink-0" title="Đồng bộ tin mới">
                         <i class="fas fa-sync-alt" id="refreshIcon"></i>
                     </button>
                 </div>
 
-                <!-- TABS -->
+                <!-- TABS CHÍNH -->
                 <div class="flex items-center gap-1.5 sm:gap-2">
                     <button id="tabNews" onclick="switchTab('news')" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 active">
                         <i class="fas fa-newspaper text-blue-600"></i><span class="hidden sm:inline">Tin tức</span>
                     </button>
                     <button id="tabServices" onclick="switchTab('services')" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 text-gray-800">
-                        <i class="fas fa-hand-holding-heart text-emerald-600"></i><span class="hidden sm:inline">Dịch vụ</span>
+                        <i class="fas fa-hand-holding-heart text-emerald-600"></i><span class="hidden sm:inline">Dịch vụ & Tiện ích</span>
                     </button>
                     <button id="tabBookmarks" onclick="switchTab('bookmarks')" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 text-gray-800">
                         <i class="fas fa-heart text-red-500"></i><span class="hidden lg:inline">Yêu thích</span>
@@ -88,15 +88,16 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 hidden" id="heroServices">
-        <div class="glass-card p-6 border-l-4 border-emerald-500 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
+        <div class="glass-card p-6 border-l-4 border-emerald-500 flex flex-col items-center gap-4">
+            <div class="flex items-center gap-4 w-full">
                 <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl flex-shrink-0"><i class="fas fa-university"></i></div>
                 <div>
-                    <h3 class="text-xl font-bold text-gray-800">Dịch vụ Hỗ trợ Sinh viên TNUT</h3>
-                    <p class="text-xs md:text-sm text-gray-600">Tra cứu thông tin liên hệ, địa điểm làm việc của các Phòng/Ban, Trung tâm tại TNUT.</p>
+                    <h3 class="text-xl font-bold text-gray-800">Tiện ích, Câu lạc bộ & Dịch vụ Hỗ trợ</h3>
+                    <p class="text-xs md:text-sm text-gray-600">Tra cứu nhanh toàn bộ hệ thống web, khoa, CLB, hội nhóm sinh viên và trung tâm dịch vụ.</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-2" id="serviceCategoryFilters"></div>
+            <!-- CÁC PACKS BỘ LỌC ĐƯỢC HIỂN THỊ TẠI ĐÂY -->
+            <div class="flex flex-wrap gap-2 w-full mt-2" id="serviceCategoryFilters"></div>
         </div>
     </div>
 
@@ -118,18 +119,19 @@
         <h3 class="text-base md:text-xl font-bold text-gray-800" id="sectionTitle">Tất cả thông tin mới nhất</h3>
         <select id="sourceFilter" class="glass px-3 py-1.5 rounded-lg text-xs md:text-sm outline-none cursor-pointer text-gray-700 font-medium">
             <option value="Tất cả">Tất cả nguồn</option>
-            <option value="Website">Website Trường</option>
-            <option value="Portal">Portal Sinh viên</option>
-            <option value="Facebook">Facebook Fanpage</option>
+            <option value="Website">Website</option>
+            <option value="Portal">Portal / Hệ thống</option>
+            <option value="Facebook">Facebook</option>
         </select>
     </div>
 
-    <!-- LƯỚI NỘI DUNG -->
+    <!-- LƯỚI NỘI DUNG CHÍNH -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         <div id="emptyState" class="hidden text-center py-16">
             <i class="fas fa-folder-open text-5xl text-gray-400 mb-3 opacity-60"></i>
             <h3 class="text-base font-semibold text-gray-700" id="emptyStateTitle">Không tìm thấy nội dung</h3>
+            <p class="text-xs text-gray-500 mt-1">Vui lòng thử bộ lọc hoặc từ khóa khác.</p>
         </div>
     </div>
 
@@ -142,6 +144,7 @@
             <div class="bg-white p-3.5 rounded-xl inline-block shadow-inner mb-3 border border-gray-100">
                 <div id="qrcode" class="mx-auto flex justify-center"></div>
             </div>
+            <p class="text-[11px] text-gray-500 mb-4"><i class="fas fa-camera mr-1"></i> Quét bằng Camera điện thoại hoặc Zalo</p>
             <a id="qrLinkToOriginal" href="#" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow text-sm">
                 <i class="fas fa-external-link-alt mr-1.5"></i> Mở trang đích
             </a>
@@ -149,56 +152,108 @@
     </div>
 
     <script>
-        // DATA DỰ PHÒNG TIN TỨC (Dùng khi chưa load được news.json)
+        // --- 1. DỮ LIỆU TIN TỨC DỰ PHÒNG ---
         const embeddedNewsData = [
-            { id: "def_01", title: "Lịch thực hành Đại cương Kỹ thuật dành cho sinh viên khóa K62", category: "Học tập", source: "Website", date: "Mới cập nhật", summary: "Phòng Đào tạo thông báo lịch phân công ca học thực hành...", originalUrl: "https://tnut.edu.vn/tin-tuc-su-kien/lich-thuc-hanh-k62.html" },
-            { id: "def_02", title: "Hướng dẫn đăng ký học phần bổ sung và nộp học phí", category: "Tài chính", source: "Portal", date: "Mới cập nhật", summary: "Phòng Đào tạo thông báo quy trình mở cổng đăng ký học phần...", originalUrl: "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1025" },
-            { id: "def_03", title: "Thông báo Cuộc thi Khởi nghiệp Sáng tạo kỹ thuật", category: "Thông báo chung", source: "Facebook", date: "Mới cập nhật", summary: "Đoàn Thanh niên Trường phát động cuộc thi sáng tạo kỹ thuật...", originalUrl: "https://www.facebook.com/Truongdhktcn/posts/pfbid02X4aBb" }
+            { id: "def_01", title: "Lịch thực hành Đại cương Kỹ thuật dành cho sinh viên khóa K62", category: "Học tập", source: "Website", date: "Mới cập nhật", summary: "Phòng Đào tạo thông báo lịch phân công ca học thực hành môn Đại cương Kỹ thuật...", originalUrl: "https://tnut.edu.vn/tin-tuc-su-kien/lich-thuc-hanh-k62.html" },
+            { id: "def_02", title: "Hướng dẫn đăng ký học phần bổ sung và nộp học phí", category: "Tài chính", source: "Portal", date: "Mới cập nhật", summary: "Quy trình mở cổng đăng ký học phần bổ sung và các hình thức nộp học phí qua Portal...", originalUrl: "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1025" }
         ];
 
-        // 11 DỊCH VỤ HỖ TRỢ VỚI LINK CHUẨN XÁC
+        // --- 2. TỔNG HỢP TOÀN BỘ TIỆN ÍCH, CÁC PACKS VÀ TRUNG TÂM SỐ ---
         const campusServicesData = [
-            { id: "srv_01", title: "Phòng Đào tạo - Quản lý Học vụ", category: "Thủ tục Học vụ", source: "Website", date: "Hành chính", summary: "Thủ tục đăng ký học phần, hoãn thi, bảng điểm, tốt nghiệp.", originalUrl: "https://tnut.edu.vn/phong-dao-tao-lu22.html", contact: "Phòng 303 - Nhà Hiệu bộ" },
-            { id: "srv_02", title: "Phòng Công tác Sinh viên (CTSV)", category: "Hành chính SV", source: "Portal", date: "Hành chính", summary: "Giấy xác nhận, BHYT, điểm rèn luyện, xét học bổng.", originalUrl: "http://portal.tnut.edu.vn/TrangChu.aspx?PhongBan=CTSV", contact: "Phòng 208 - Nhà Hiệu bộ" },
-            { id: "srv_03", title: "Phòng Kế hoạch Tài chính", category: "Học phí & Vay vốn", source: "Portal", date: "Hành chính", summary: "Thu học phí, hoàn nộp, hồ sơ miễn giảm, vay vốn.", originalUrl: "http://portal.tnut.edu.vn/TrangChu.aspx?PhongBan=KHTC", contact: "Phòng 313 - Nhà Hiệu bộ" },
-            { id: "srv_04", title: "Trung tâm Thông tin Thư viện", category: "Học tập & Số", source: "Website", date: "Mở cửa", summary: "Mượn trả sách, phòng đọc, tự học, tài nguyên số.", originalUrl: "https://thuvien.tnut.edu.vn/", contact: "Tòa nhà Thư viện TNUT" },
-            { id: "srv_05", title: "Ban Quản lý Ký túc xá", category: "Đời sống & KTX", source: "Website", date: "24/7", summary: "Đăng ký ở KTX, tạm trú, an ninh, điện nước.", originalUrl: "https://tnut.edu.vn/trung-tam-dich-vu-tong-hop-lu31.html", contact: "Nhà A6 / Khu KTX" },
-            { id: "srv_06", title: "Trạm Y tế TNUT", category: "Y tế & Sức khỏe", source: "Website", date: "Trực 24/7", summary: "Khám sơ cứu, quản lý hồ sơ sức khỏe, thuốc BHYT.", originalUrl: "https://tnut.edu.vn/tram-y-te-lu33.html", contact: "Nhà Y tế (Cạnh KTX Khu B)" },
-            { id: "srv_07", title: "Trung tâm Tuyển sinh và Truyền thông", category: "Tư vấn & Tuyển sinh", source: "Website", date: "Hành chính", summary: "Tư vấn tuyển sinh, hệ liên thông, thông tin trường.", originalUrl: "https://tnut.edu.vn/tuyen-sinh", contact: "Showroom Cổng chính" },
-            { id: "srv_08", title: "Trung tâm Hợp tác Doanh nghiệp", category: "Hướng nghiệp", source: "Website", date: "Hành chính", summary: "Việc làm, thực tập, Job Fair, học bổng doanh nghiệp.", originalUrl: "https://tnut.edu.vn/hop-tac-doanh-nghiep-lu28.html", contact: "Tầng 1 Thư viện" },
-            { id: "srv_09", title: "Trung tâm Thực nghiệm", category: "NCKH & Thực nghiệm", source: "Website", date: "Theo ca", summary: "Phòng máy cắt gọt, CNC, chế tạo đồ án sinh viên.", originalUrl: "https://workshop.tnut.edu.vn", contact: "Xưởng Thực nghiệm" },
-            { id: "srv_10", title: "Viện Nghiên cứu (RIAT)", category: "NCKH & Thực nghiệm", source: "Website", date: "Hành chính", summary: "Nghiên cứu Tự động hóa, bán dẫn, sinh viên thực tập dự án.", originalUrl: "https://riat.tnut.edu.vn", contact: "Nhà A6 | riat@tnut.edu.vn" },
-            { id: "srv_11", title: "Đoàn Thanh niên - Hội Sinh viên", category: "Phong trào", source: "Facebook", date: "Thường trực", summary: "Hoạt động tình nguyện, hội thi, CLB kỹ năng mềm.", originalUrl: "https://www.facebook.com/Truongdhktcn", contact: "Tầng 1 Nhà C1" }
+            // Trung tâm Số ĐHTN
+            { id: "srv_tts", title: "Trung tâm Số - Đại học Thái Nguyên", category: "Học tập & Số", source: "Website", date: "Cơ sở vật chất", summary: "Trung tâm thư viện số, học liệu điện tử và không gian tự học hiện đại.", originalUrl: "https://lrc.tnu.edu.vn/", contact: "HRQ6+9V2 Trung tâm Số, Phan Đình Phùng, Thái Nguyên", mapUrl: "https://www.google.com/maps/search/?api=1&query=Trung+tâm+Số+Phan+Đình+Phùng+Thái+Nguyên" },
+
+            // Pack 1: Website và hệ thống học tập
+            { id: "p1_1", title: "Website TNUT", category: "Web & Hệ thống", source: "Website", date: "Hệ thống", summary: "Trang thông tin điện tử chính thức của Trường Đại học Kỹ thuật Công nghiệp.", originalUrl: "https://tnut.edu.vn/" },
+            { id: "p1_2", title: "Portal Sinh viên TNUT", category: "Web & Hệ thống", source: "Portal", date: "Hệ thống", summary: "Cổng thông tin đào tạo, đăng ký tín chỉ, tra cứu điểm và học phí.", originalUrl: "http://portal.tnut.edu.vn/" },
+            { id: "p1_3", title: "E-learning TNUT (LMS)", category: "Web & Hệ thống", source: "Website", date: "Hệ thống", summary: "Hệ thống quản lý học tập trực tuyến, nộp bài tập và thi online.", originalUrl: "https://lms.tnut.edu.vn/" },
+            { id: "p1_4", title: "Danh mục khóa học LMS", category: "Web & Hệ thống", source: "Website", date: "Hệ thống", summary: "Truy cập nhanh danh sách các khóa học trực tuyến theo học kỳ.", originalUrl: "https://lms.tnut.edu.vn/course/index.php" },
+            { id: "p1_5", title: "Hướng dẫn sử dụng Portal", category: "Web & Hệ thống", source: "Website", date: "Hướng dẫn", summary: "Tài liệu quy trình và cách sử dụng các chức năng trên Portal sinh viên.", originalUrl: "https://www.tnut.edu.vn/blog/quy-trinh-huong-dan-18400000" },
+            { id: "p1_6", title: "Hướng dẫn đăng ký học phần", category: "Web & Hệ thống", source: "Website", date: "Hướng dẫn", summary: "Các bước thao tác để đăng ký môn học trên hệ thống Portal.", originalUrl: "https://tnut.edu.vn/huong-dan-dang-ky-hoc-tren-portal-dz20129.html" },
+            { id: "p1_7", title: "Thư viện TNUT", category: "Web & Hệ thống", source: "Website", date: "Hệ thống", summary: "Cổng thông tin Trung tâm Thông tin - Thư viện TNUT.", originalUrl: "https://tnut.edu.vn/" },
+            { id: "p1_8", title: "Học liệu số (Ebook)", category: "Web & Hệ thống", source: "Website", date: "Hệ thống", summary: "Hệ thống sách điện tử và giáo trình số dùng chung.", originalUrl: "https://ebook.edu.vn/" },
+
+            // Pack 2: Website các khoa và đơn vị
+            { id: "p2_1", title: "Khoa Cơ khí", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Cơ khí TNUT.", originalUrl: "https://cokhi.tnut.edu.vn/" },
+            { id: "p2_2", title: "Khoa Điện", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Điện TNUT.", originalUrl: "https://efa.tnut.edu.vn/" },
+            { id: "p2_3", title: "Khoa Điện tử", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Điện tử TNUT.", originalUrl: "https://fee.tnut.edu.vn/" },
+            { id: "p2_4", title: "Khoa Khoa học cơ bản và Ứng dụng", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa KHCB & Ứng dụng.", originalUrl: "https://khoacoban.tnut.edu.vn/" },
+            { id: "p2_5", title: "Khoa Kinh tế Công nghiệp", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Kinh tế Công nghiệp.", originalUrl: "https://ktcn.tnut.edu.vn/" },
+            { id: "p2_6", title: "Khoa Ô tô và Năng lượng", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Ô tô và Năng lượng.", originalUrl: "https://vee.tnut.edu.vn/" },
+            { id: "p2_7", title: "Khoa Quốc tế", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Quốc tế.", originalUrl: "https://fit.tnut.edu.vn/" },
+            { id: "p2_8", title: "Khoa Công nghệ Cơ Điện và Điện tử", category: "Các Khoa", source: "Website", date: "Đơn vị đào tạo", summary: "Trang web chính thức của Khoa Công nghệ Cơ Điện và Điện tử.", originalUrl: "https://meet.tnut.edu.vn/" },
+            { id: "p2_9", title: "Trung tâm Thực nghiệm", category: "Các Khoa", source: "Website", date: "Cơ sở", summary: "Hệ thống xưởng thực hành, chế tạo và gia công cơ khí.", originalUrl: "https://workshop.tnut.edu.vn/" },
+            { id: "p2_10", title: "Viện Nghiên cứu phát triển công nghệ cao", category: "Các Khoa", source: "Website", date: "Viện NC", summary: "Viện RIAT: Nghiên cứu tự động hóa, bán dẫn và AI.", originalUrl: "https://riat.tnut.edu.vn/" },
+
+            // Pack 3: Facebook các câu lạc bộ
+            { id: "p3_1", title: "CLB STEM TNUT", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Câu lạc bộ Khoa học, Kỹ thuật, Công nghệ và Toán học.", originalUrl: "https://www.facebook.com/STEMTNUT" },
+            { id: "p3_2", title: "CLB Sáng tạo", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Nơi ươm mầm các ý tưởng khởi nghiệp và chế tạo.", originalUrl: "https://www.facebook.com/tnutcreativeclub" },
+            { id: "p3_3", title: "CLB Tiếng Anh", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Môi trường giao tiếp và rèn luyện ngoại ngữ.", originalUrl: "https://www.facebook.com/tnut.englishclub" },
+            { id: "p3_4", title: "CLB Sách và Hành động", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Lan tỏa văn hóa đọc sách và các chiến dịch hành động.", originalUrl: "https://www.facebook.com/svhdtnut" },
+            { id: "p3_5", title: "CLB Sinh viên 5 tốt", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Hỗ trợ sinh viên phấn đấu đạt danh hiệu Sinh viên 5 tốt.", originalUrl: "https://www.facebook.com/groups/sv5tot.tnut" },
+            { id: "p3_6", title: "CLB Guitar", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Nơi giao lưu âm nhạc, học đàn và biểu diễn.", originalUrl: "https://www.facebook.com/GuitarTNUTfamily" },
+            { id: "p3_7", title: "CLB Kết nối TNUT", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Đội sự kiện và truyền thông sinh viên.", originalUrl: "https://www.facebook.com/clbketnoitnut" },
+            { id: "p3_8", title: "CLB Truyền thông Media", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Sản xuất hình ảnh, video và quản lý fanpage.", originalUrl: "https://www.facebook.com/TNUTMEDIA" },
+            { id: "p3_9", title: "CLB Võ thuật", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Rèn luyện thể chất, tự vệ (Karatedo, Vovinam...).", originalUrl: "https://www.facebook.com/Tnutkaratedo/" },
+            { id: "p3_10", title: "CLB Bóng rổ", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Tập luyện và thi đấu giải bóng rổ sinh viên.", originalUrl: "https://www.facebook.com/groups/BongroTNUT" },
+            { id: "p3_11", title: "CLB Chạy bộ", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Cộng đồng những người yêu thích chạy bộ TNUT.", originalUrl: "https://www.facebook.com/TNUT.RUNNERS.CLUB" },
+            { id: "p3_12", title: "CLB Cầu lông", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Giao lưu thể thao bộ môn cầu lông.", originalUrl: "https://www.facebook.com/groups/232076500678616" },
+            { id: "p3_13", title: "CLB Đá cầu", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Giao lưu thể thao bộ môn đá cầu.", originalUrl: "https://www.facebook.com/Clb-%C4%90%C3%A1-C%E1%BA%A7u-TNUT-Th%C3%A1i-Nguy%C3%AAn-1514633278825679" },
+            { id: "p3_14", title: "CLB Cờ vua", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "CLB Cờ vua sinh viên TNUT (TNUT CHESS CLUB).", originalUrl: "https://www.facebook.com/CLB-C%E1%BB%9D-Vua-TNUT-TNUT-CHESS-CLUB--102435411711529" },
+            { id: "p3_15", title: "CLB Mùa hè xanh", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Đội tình nguyện chiến dịch Mùa Hè Xanh.", originalUrl: "https://www.facebook.com/SVTNmuahexanh" },
+            { id: "p3_16", title: "CLB Hiến máu ABO", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Tổ chức các đợt hiến máu nhân đạo và sự kiện Chợ Tôn.", originalUrl: "https://www.facebook.com/ClbAboTnut" },
+            { id: "p3_17", title: "CLB Vì cộng đồng XQM", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Đội tình nguyện các hoạt động xã hội cộng đồng.", originalUrl: "https://www.facebook.com/TinhNguyenXQM" },
+            { id: "p3_18", title: "CLB Sức khỏe – Giới tính", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Tuyên truyền kiến thức sức khỏe và giới tính cho SV.", originalUrl: "https://www.facebook.com/tuyentruyensuckhoegioitinhtnut" },
+
+            // Pack 4: Học bổng và hỗ trợ sinh viên
+            { id: "p4_1", title: "Chuyên trang Học bổng TNUT", category: "Hỗ trợ SV", source: "Website", date: "Hỗ trợ", summary: "Cập nhật thông tin học bổng khuyến khích và tài trợ.", originalUrl: "https://tnut.edu.vn/" },
+            { id: "p4_2", title: "Hướng dẫn & Quy trình xét duyệt", category: "Hỗ trợ SV", source: "Website", date: "Quy trình", summary: "Chi tiết các bước làm hồ sơ xin học bổng và trợ cấp.", originalUrl: "https://www.tnut.edu.vn/blog/quy-trinh-huong-dan-18400000" },
+            { id: "p4_3", title: "Học bổng Doanh nghiệp (TT HTDN)", category: "Hỗ trợ SV", source: "Website", date: "Cơ hội", summary: "Các suất học bổng từ đối tác công ty, doanh nghiệp.", originalUrl: "http://htdn.tnut.edu.vn/" },
+
+            // Pack 5: Phòng ban và dịch vụ sinh viên
+            { id: "p5_1", title: "Danh bạ liên hệ TNUT", category: "Phòng ban", source: "Website", date: "Hành chính", summary: "Số điện thoại, email của tất cả các Phòng, Ban, Khoa.", originalUrl: "https://tnut.edu.vn/lien-he.html" },
+            { id: "p5_2", title: "Hội Sinh viên TNUT", category: "Phòng ban", source: "Website", date: "Đoàn - Hội", summary: "Trang thông tin của tổ chức Hội Sinh viên trường.", originalUrl: "https://www.tnut.edu.vn/hoi-sinh-vien-lu1098.html" },
+
+            // Pack 6: Tìm kiếm nhóm Facebook sinh viên
+            { id: "p6_1", title: "Tìm kiếm: Nhóm sinh viên TNUT", category: "Nhóm Sinh viên", source: "Facebook", date: "Cộng đồng", summary: "Tra cứu các hội nhóm sinh viên chung của trường.", originalUrl: "https://www.facebook.com/search/groups/?q=sinh%20vi%C3%AAn%20TNUT" },
+            { id: "p6_2", title: "Tìm kiếm: Nhóm K60 TNUT", category: "Nhóm Sinh viên", source: "Facebook", date: "Cộng đồng", summary: "Hội nhóm sinh viên khóa K60.", originalUrl: "https://www.facebook.com/search/groups/?q=K60%20TNUT" },
+            { id: "p6_3", title: "Tìm kiếm: Nhóm K61 TNUT", category: "Nhóm Sinh viên", source: "Facebook", date: "Cộng đồng", summary: "Hội nhóm sinh viên khóa K61.", originalUrl: "https://www.facebook.com/search/groups/?q=K61%20TNUT" },
+            { id: "p6_4", title: "Tìm kiếm: Nhóm K62 TNUT", category: "Nhóm Sinh viên", source: "Facebook", date: "Cộng đồng", summary: "Hội nhóm tân sinh viên khóa K62.", originalUrl: "https://www.facebook.com/search/groups/?q=K62%20TNUT" },
+            { id: "p6_5", title: "Tra cứu: Fanpage các Khoa TNUT", category: "Nhóm Sinh viên", source: "Facebook", date: "Cộng đồng", summary: "Tìm kiếm Fanpage chính thức của các Khoa chuyên ngành.", originalUrl: "https://www.facebook.com/search/pages/?q=Khoa%20TNUT" },
+            { id: "p6_6", title: "Tra cứu: Fanpage Câu lạc bộ TNUT", category: "Nhóm Sinh viên", source: "Facebook", date: "Cộng đồng", summary: "Tìm kiếm Fanpage của các CLB, đội nhóm đang hoạt động.", originalUrl: "https://www.facebook.com/search/pages/?q=C%C3%A2u%20l%E1%BA%A1c%20b%E1%BB%99%20TNUT" }
         ];
 
         let activeTab = 'news';
-        let newsData = embeddedNewsData; // Nạp dữ liệu ngay lập tức
+        let newsData = embeddedNewsData; // NẠP NGAY LẬP TỨC 0 GIÂY!
         let currentCategory = 'Tất cả';
         let currentSearch = '';
         let currentSource = 'Tất cả';
         let bookmarks = JSON.parse(localStorage.getItem('tnut_bookmarks')) || [];
         
+        // Bổ sung các Pack vào Bộ lọc Danh mục
         const newsCategories = ['Tất cả', 'Học tập', 'Tài chính', 'Thư viện', 'Hướng nghiệp', 'Thông báo chung'];
-        const serviceCategories = ['Tất cả', 'Thủ tục Học vụ', 'Hành chính SV', 'Học phí & Vay vốn', 'Học tập & Số', 'Đời sống & KTX', 'Y tế & Sức khỏe', 'Tư vấn & Tuyển sinh', 'Hướng nghiệp', 'NCKH & Thực nghiệm', 'Phong trào'];
+        const serviceCategories = ['Tất cả', 'Web & Hệ thống', 'Các Khoa', 'Câu lạc bộ', 'Phòng ban', 'Hỗ trợ SV', 'Nhóm Sinh viên', 'Học tập & Số', 'Đời sống & KTX', 'Y tế & Sức khỏe'];
 
         function init() {
             renderCategoryFilters();
             updateBookmarkCount();
-            renderContent();
-            fetchLatestNewsInBackground(); // Lấy data mới âm thầm
+            renderContent(); // HIỂN THỊ TỨC THÌ
+            
+            fetchLatestNewsInBackground(); // TẢI NGẦM DỮ LIỆU MỚI
             
             document.getElementById('searchInput').addEventListener('input', handleSearch);
             document.getElementById('searchInputMobile').addEventListener('input', handleSearch);
             document.getElementById('sourceFilter').addEventListener('change', e => { currentSource = e.target.value; renderContent(); });
         }
 
+        // HÀM TẢI NGẦM JSON KHÔNG LÀM TREO GIAO DIỆN
         async function fetchLatestNewsInBackground(manual = false) {
             const icon1 = document.getElementById('refreshIcon');
             const icon2 = document.getElementById('refreshIconMobile');
             if (manual) { if(icon1) icon1.classList.add('fa-spin'); if(icon2) icon2.classList.add('fa-spin'); }
 
             try {
-                const res = await fetch('news.json?t=' + Date.now()); // Ép bỏ cache
+                const res = await fetch('news.json?t=' + Date.now()); 
                 if (res.ok) {
                     const fetched = await res.json();
                     if (Array.isArray(fetched) && fetched.length > 0) {
@@ -206,7 +261,7 @@
                         if (activeTab === 'news' || activeTab === 'bookmarks') renderContent();
                     }
                 }
-            } catch (e) { console.log('Sử dụng dữ liệu dự phòng.'); }
+            } catch (e) { console.log('Chưa tìm thấy tin mới, giữ nguyên dữ liệu gốc.'); }
             finally {
                 if (manual) { if(icon1) icon1.classList.remove('fa-spin'); if(icon2) icon2.classList.remove('fa-spin'); }
             }
@@ -227,9 +282,9 @@
             document.getElementById('heroServices').classList.toggle('hidden', tab !== 'services');
             document.getElementById('heroBookmarks').classList.toggle('hidden', tab !== 'bookmarks');
 
-            if (tab === 'news') document.getElementById('sectionTitle').textContent = 'Tất cả thông tin mới nhất';
-            else if (tab === 'services') document.getElementById('sectionTitle').textContent = 'Dịch vụ Hỗ trợ Sinh viên TNUT';
-            else document.getElementById('sectionTitle').textContent = 'Danh sách đã lưu';
+            if (tab === 'news') document.getElementById('sectionTitle').textContent = 'Tất cả thông báo mới nhất';
+            else if (tab === 'services') document.getElementById('sectionTitle').textContent = 'Danh mục Tiện ích & Hỗ trợ';
+            else document.getElementById('sectionTitle').textContent = 'Kho lưu trữ cá nhân';
 
             renderCategoryFilters();
             renderContent();
@@ -243,7 +298,7 @@
             container.innerHTML = '';
             catList.forEach(cat => {
                 const btn = document.createElement('button');
-                btn.className = `glass-btn px-3 py-1 rounded-full font-medium text-xs transition-all ${currentCategory === cat ? 'active' : 'text-gray-700'}`;
+                btn.className = `glass-btn px-3 py-1.5 rounded-full font-medium text-[11px] md:text-xs transition-all ${currentCategory === cat ? 'active' : 'text-gray-700'}`;
                 btn.textContent = cat;
                 btn.onclick = () => { currentCategory = cat; renderCategoryFilters(); renderContent(); };
                 container.appendChild(btn);
@@ -272,7 +327,7 @@
 
             let filtered = dataSet.filter(item => {
                 const matchCat = currentCategory === 'Tất cả' || item.category === currentCategory;
-                const matchSrc = currentSource === 'Tất cả' || item.source === currentSource;
+                const matchSrc = currentSource === 'Tất cả' || item.source === currentSource || (currentSource === 'Portal' && item.source === 'Hệ thống'); // Ghép bộ lọc
                 const matchSearch = item.title.toLowerCase().includes(currentSearch) || item.summary.toLowerCase().includes(currentSearch);
                 const matchBm = activeTab !== 'bookmarks' || bookmarks.includes(item.id);
                 return matchCat && matchSrc && matchSearch && matchBm;
@@ -293,29 +348,37 @@
                 const card = document.createElement('div');
                 card.className = 'glass-card p-5 flex flex-col h-full group';
 
-                const contactInfo = item.contact ? `<div class="text-[11px] text-emerald-800 font-semibold mb-2 bg-emerald-50/70 p-2 rounded-lg border border-emerald-100"><i class="fas fa-map-marker-alt mr-1 text-emerald-600"></i> ${item.contact}</div>` : '';
+                const contactInfo = item.contact ? `<div class="text-[10px] md:text-[11px] text-emerald-800 font-semibold mb-2 bg-emerald-50/70 p-2 rounded-lg border border-emerald-100"><i class="fas fa-map-marker-alt mr-1 text-emerald-600"></i> ${item.contact}</div>` : '';
+                
+                // Hiển thị nút Bản đồ nếu có mapUrl
+                const mapBtnHtml = item.mapUrl ? `<a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-emerald-700 font-medium hover:bg-emerald-100 flex items-center gap-1 shadow-sm"><i class="fas fa-map-marked-alt"></i> Bản đồ</a>` : '';
 
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-2.5">
-                        <span class="${s.bg} ${s.text} text-[11px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5"><i class="${s.icon}"></i> ${item.source}</span>
+                        <span class="${s.bg} ${s.text} text-[10px] md:text-[11px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5"><i class="${s.icon}"></i> ${item.source}</span>
                         <div class="flex gap-1 text-gray-400">
                             <button class="btn-qr hover:text-blue-600 transition p-1.5" title="Mã QR"><i class="fas fa-qrcode text-base"></i></button>
                             <button class="btn-bm transition p-1.5" title="Lưu bài"><i class="fas fa-heart text-base ${isBookmarked ? 'text-red-500' : 'hover:text-red-500'}"></i></button>
                         </div>
                     </div>
-                    <div class="text-[11px] text-gray-500 mb-1.5 font-medium"><i class="far fa-calendar-alt mr-1"></i> ${item.date} • <span class="text-blue-700 font-semibold">${item.category}</span></div>
-                    <h4 class="text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${item.title}</h4>
+                    <div class="text-[10px] md:text-[11px] text-gray-500 mb-1.5 font-medium"><i class="far fa-calendar-alt mr-1"></i> ${item.date} • <span class="text-blue-700 font-semibold">${item.category}</span></div>
+                    <h4 class="text-sm md:text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${item.title}</h4>
                     ${contactInfo}
-                    <p class="text-xs text-gray-600 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.summary}</p>
-                    <div class="mt-auto pt-3 border-t border-gray-200/60 flex justify-between items-center">
-                        <a href="${item.originalUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-800 transition">
-                            Truy cập nguồn <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                    <p class="text-[11px] md:text-xs text-gray-600 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.summary}</p>
+                    
+                    <div class="mt-auto pt-3 border-t border-gray-200/60 flex flex-wrap justify-between items-center gap-2">
+                        <a href="${item.originalUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[10px] md:text-[11px] font-semibold text-blue-600 hover:text-blue-800 transition">
+                            Truy cập ngay <i class="fas fa-arrow-right ml-1 text-[9px]"></i>
                         </a>
-                        <button class="btn-qr-sub glass-btn px-2.5 py-1 rounded-md text-xs text-blue-700 font-medium hover:bg-blue-100 flex items-center gap-1">
-                            <i class="fas fa-qrcode"></i> QR
-                        </button>
+                        <div class="flex gap-1.5">
+                            ${mapBtnHtml}
+                            <button class="btn-qr-sub glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-blue-700 font-medium hover:bg-blue-100 flex items-center gap-1 shadow-sm">
+                                <i class="fas fa-qrcode"></i> QR
+                            </button>
+                        </div>
                     </div>
                 `;
+                
                 card.querySelector('.btn-bm').onclick = () => toggleBookmark(item.id);
                 card.querySelector('.btn-qr').onclick = () => openQRModal(item.originalUrl, item.title);
                 card.querySelector('.btn-qr-sub').onclick = () => openQRModal(item.originalUrl, item.title);
@@ -333,7 +396,7 @@
         }
 
         function clearAllBookmarks() {
-            if (confirm('Xóa tất cả danh mục đã lưu?')) {
+            if (confirm('Xóa tất cả mục đã lưu?')) {
                 bookmarks = [];
                 localStorage.removeItem('tnut_bookmarks');
                 updateBookmarkCount();

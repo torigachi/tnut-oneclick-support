@@ -37,38 +37,29 @@
     },
     {
         "id": "portal_def_1",
-        "title": "Hướng dẫn đăng ký học phần bổ sung và nộp học phí Học kỳ I",
+        "title": "Hướng dẫn đăng ký học phần bổ sung và nộp học phí",
         "category": "Tài chính",
         "source": "Portal",
         "date": "Hôm nay",
-        "summary": "Phòng Đào tạo phối hợp Phòng KHTC thông báo quy trình mở cổng đăng ký học phần bổ sung và các hình thức nộp học phí qua Portal...",
+        "summary": "Quy trình đăng ký học phần bổ sung qua Portal và các hình thức đóng học phí...",
         "originalUrl": "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1025"
     },
     {
-        "id": "portal_def_2",
-        "title": "Công khai kết quả đánh giá điểm rèn luyện sinh viên đợt 1",
-        "category": "Công tác SV",
-        "source": "Portal",
-        "date": "Hôm qua",
-        "summary": "Phòng Quản lý người học công bố danh sách điểm rèn luyện. Sinh viên kiểm tra tài khoản cá nhân và gửi phản hồi trước mốc thời gian quy định...",
-        "originalUrl": "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1024"
-    },
-    {
         "id": "fb_tnut_1",
-        "title": "Thông báo Cuộc thi Khởi nghiệp Sáng tạo kỹ thuật sinh viên TNUT 2026",
+        "title": "Cuộc thi Khởi nghiệp Sáng tạo kỹ thuật sinh viên TNUT 2026",
         "category": "Thông báo chung",
         "source": "Facebook",
-        "date": " Vừa xong",
-        "summary": "Đoàn Thanh niên Trường ĐH Kỹ thuật Công nghiệp phát động cuộc thi sáng tạo kỹ thuật dành cho toàn thể sinh viên các khoa...",
+        "date": "Hôm nay",
+        "summary": "Đoàn Thanh niên phát động cuộc thi sáng tạo kỹ thuật dành cho toàn thể sinh viên...",
         "originalUrl": "https://www.facebook.com/Truongdhktcn/posts/pfbid02X4aBbCdEfGhIjKl"
     },
     {
         "id": "fb_tnut_2",
-        "title": "Lịch ra quân Chương trình Tình nguyện Mùa đông & Xuân tình nguyện",
+        "title": "Lịch ra quân Chương trình Tình nguyện Mùa đông",
         "category": "Thông báo chung",
         "source": "Facebook",
         "date": "2 ngày trước",
-        "summary": "Hội Sinh viên thông báo danh sách tình nguyện viên được duyệt và lịch tập trung tập huấn trước khi ra quân tại các địa bàn vùng cao...",
+        "summary": "Hội Sinh viên thông báo danh sách tình nguyện viên được duyệt và lịch tập huấn...",
         "originalUrl": "https://www.facebook.com/Truongdhktcn/posts/pfbid03Y5bCcDeFgHjKlMn"
     }
 ]

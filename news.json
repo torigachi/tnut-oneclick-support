@@ -1,20 +1,92 @@
 [
     {
-        "id": "tnut_01",
-        "title": "Lịch thực hành Đại cương Kỹ thuật dành cho sinh viên khóa K62",
-        "category": "Học tập",
+        "id": "tnut_1",
+        "title": "Kỹ thuật cơ khí chương trình tiên tiến",
+        "category": "Thông báo chung",
         "source": "Website",
-        "date": "Hôm nay",
-        "summary": "Phòng Đào tạo thông báo lịch phân công ca học thực hành môn Đại cương Kỹ thuật...",
-        "originalUrl": "https://tnut.edu.vn/tin-tuc-su-kien/lich-thuc-hanh-k62"
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật cơ khí chương trình tiên tiến",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-co-khi-lz30.html"
     },
     {
-        "id": "tnut_02",
-        "title": "Hướng dẫn làm thủ tục vay vốn tín dụng sinh viên Học kỳ I",
-        "category": "Tài chính",
-        "source": "Portal",
-        "date": "Hôm qua",
-        "summary": "Phòng Công tác Sinh viên hướng dẫn quy trình, mẫu đơn xin xác nhận vay vốn ngân hàng...",
-        "originalUrl": "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1024"
+        "id": "tnut_2",
+        "title": "Kỹ thuật điện chương trình tiên tiến",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật điện chương trình tiên tiến",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-dien-lz29.html"
+    },
+    {
+        "id": "tnut_3",
+        "title": "Kỹ thuật điện tử viễn thông",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật điện tử viễn thông",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-vien-thong-lz45.html"
+    },
+    {
+        "id": "tnut_4",
+        "title": "Kỹ thuật điều khiển và tự động hóa",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật điều khiển và tự động hóa",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tu-dong-hoa-lz47.html"
+    },
+    {
+        "id": "tnut_5",
+        "title": "Công nghệ kỹ thuật điện điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Công nghệ kỹ thuật điện điện tử",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dien-lz33.html"
+    },
+    {
+        "id": "tnut_6",
+        "title": "Công nghệ kỹ thuật điều khiển và tự động hóa",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Công nghệ kỹ thuật điều khiển và tự động hóa",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dieu-khien-va-tu-dong-hoa-lz39.html"
+    },
+    {
+        "id": "tnut_7",
+        "title": "Chuyên ngành: Công nghệ điện tử, bán dẫn và vi mạch",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Chuyên ngành: Công nghệ điện tử, bán dẫn và vi mạch",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-dien-tu-ban-dan-va-vi-mach-lz1095.html"
+    },
+    {
+        "id": "tnut_8",
+        "title": "Kỹ thuật điện - giảng dạy bằng tiếng Anh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật điện - giảng dạy bằng tiếng Anh",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-giang-day-bang-tieng-anh-dz22300.html"
+    },
+    {
+        "id": "tnut_9",
+        "title": "Kỹ thuật cơ khí - giảng dạy bằng tiếng Anh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật cơ khí - giảng dạy bằng tiếng Anh",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-giang-day-bang-tieng-anh-dz22301.html"
+    },
+    {
+        "id": "tnut_10",
+        "title": "Kỹ thuật điều khiển và tự động hóa",
+        "category": "Học tập",
+        "source": "Website",
+        "date": "Mới cập nhật",
+        "summary": "Thông báo chính thức từ TNUT: Kỹ thuật điều khiển và tự động hóa",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tdh-dz2298.html"
     }
 ]

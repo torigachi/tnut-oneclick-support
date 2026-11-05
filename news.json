@@ -4,8 +4,8 @@
         "title": "Kỹ thuật cơ khí chương trình tiên tiến",
         "category": "Thông báo chung",
         "source": "Website",
-        "date": "Mới cập nhật",
-        "summary": "Thông báo chính thức từ Trang tin TNUT: Kỹ thuật cơ khí chương trình tiên tiến",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật cơ khí chương trình tiên tiến",
         "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-co-khi-lz30.html"
     },
     {
@@ -13,8 +13,8 @@
         "title": "Kỹ thuật điện chương trình tiên tiến",
         "category": "Thông báo chung",
         "source": "Website",
-        "date": "Mới cập nhật",
-        "summary": "Thông báo chính thức từ Trang tin TNUT: Kỹ thuật điện chương trình tiên tiến",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật điện chương trình tiên tiến",
         "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-dien-lz29.html"
     },
     {
@@ -22,8 +22,8 @@
         "title": "Kỹ thuật điện tử viễn thông",
         "category": "Thông báo chung",
         "source": "Website",
-        "date": "Mới cập nhật",
-        "summary": "Thông báo chính thức từ Trang tin TNUT: Kỹ thuật điện tử viễn thông",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật điện tử viễn thông",
         "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-vien-thong-lz45.html"
     },
     {
@@ -31,35 +31,98 @@
         "title": "Kỹ thuật điều khiển và tự động hóa",
         "category": "Thông báo chung",
         "source": "Website",
-        "date": "Mới cập nhật",
-        "summary": "Thông báo chính thức từ Trang tin TNUT: Kỹ thuật điều khiển và tự động hóa",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật điều khiển và tự động hóa",
         "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tu-dong-hoa-lz47.html"
     },
     {
+        "id": "web_5",
+        "title": "Công nghệ kỹ thuật điện điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Công nghệ kỹ thuật điện điện tử",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dien-lz33.html"
+    },
+    {
+        "id": "web_6",
+        "title": "Công nghệ kỹ thuật điều khiển và tự động hóa",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Công nghệ kỹ thuật điều khiển và tự động hóa",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dieu-khien-va-tu-dong-hoa-lz39.html"
+    },
+    {
+        "id": "web_7",
+        "title": "Chuyên ngành: Công nghệ điện tử, bán dẫn và vi mạch",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Chuyên ngành: Công nghệ điện tử, bán dẫn và vi mạch",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-dien-tu-ban-dan-va-vi-mach-lz1095.html"
+    },
+    {
+        "id": "web_8",
+        "title": "Kỹ thuật điện - giảng dạy bằng tiếng Anh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật điện - giảng dạy bằng tiếng Anh",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-giang-day-bang-tieng-anh-dz22300.html"
+    },
+    {
+        "id": "web_9",
+        "title": "Kỹ thuật cơ khí - giảng dạy bằng tiếng Anh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật cơ khí - giảng dạy bằng tiếng Anh",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-giang-day-bang-tieng-anh-dz22301.html"
+    },
+    {
+        "id": "web_10",
+        "title": "Kỹ thuật điều khiển và tự động hóa",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "Mới nhất",
+        "summary": "Thông báo từ Website TNUT: Kỹ thuật điều khiển và tự động hóa",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tdh-dz2298.html"
+    },
+    {
         "id": "portal_def_1",
-        "title": "Hướng dẫn đăng ký học phần bổ sung và nộp học phí",
+        "title": "[Ghim] Hướng dẫn đăng ký học phần bổ sung và nộp học phí",
         "category": "Tài chính",
         "source": "Portal",
-        "date": "Hôm nay",
-        "summary": "Quy trình đăng ký học phần bổ sung qua Portal và các hình thức đóng học phí...",
+        "date": "Thông báo ghim",
+        "summary": "Truy cập Portal để xem quy trình mở cổng đăng ký học phần bổ sung và nộp học phí...",
         "originalUrl": "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1025"
     },
     {
+        "id": "portal_def_2",
+        "title": "[Ghim] Quy định về chuẩn đầu ra Tiếng Anh và Tin học",
+        "category": "Học tập",
+        "source": "Portal",
+        "date": "Thông báo ghim",
+        "summary": "Sinh viên tra cứu yêu cầu chuẩn đầu ra và thời hạn nộp chứng chỉ xét tốt nghiệp...",
+        "originalUrl": "http://portal.tnut.edu.vn/NoticeDetail.aspx?id=1020"
+    },
+    {
         "id": "fb_tnut_1",
-        "title": "Cuộc thi Khởi nghiệp Sáng tạo kỹ thuật sinh viên TNUT 2026",
-        "category": "Thông báo chung",
+        "title": "[Ghim] Hoạt động của Đoàn Thanh niên - Hội Sinh viên TNUT",
+        "category": "Phong trào",
         "source": "Facebook",
-        "date": "Hôm nay",
-        "summary": "Đoàn Thanh niên phát động cuộc thi sáng tạo kỹ thuật dành cho toàn thể sinh viên...",
-        "originalUrl": "https://www.facebook.com/Truongdhktcn/posts/pfbid02X4aBbCdEfGhIjKl"
+        "date": "Tin nổi bật",
+        "summary": "Theo dõi các cuộc thi, hoạt động ngoại khóa và phong trào tình nguyện mới nhất của Đoàn trường...",
+        "originalUrl": "https://www.facebook.com/Truongdhktcn"
     },
     {
         "id": "fb_tnut_2",
-        "title": "Lịch ra quân Chương trình Tình nguyện Mùa đông",
-        "category": "Thông báo chung",
+        "title": "[Ghim] Cơ hội việc làm, Thực tập cho Sinh viên năm cuối",
+        "category": "Hướng nghiệp",
         "source": "Facebook",
-        "date": "2 ngày trước",
-        "summary": "Hội Sinh viên thông báo danh sách tình nguyện viên được duyệt và lịch tập huấn...",
-        "originalUrl": "https://www.facebook.com/Truongdhktcn/posts/pfbid03Y5bCcDeFgHjKlMn"
+        "date": "Tin nổi bật",
+        "summary": "Cập nhật các tin tức tuyển dụng từ doanh nghiệp liên kết với nhà trường thông qua Fanpage...",
+        "originalUrl": "https://www.facebook.com/Truongdhktcn"
     }
 ]

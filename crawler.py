@@ -18,12 +18,26 @@ def parse_date(date_str):
     try: return datetime.strptime(date_str, "%d/%m/%Y")
     except: return datetime(2000, 1, 1)
 
-def extract_date(text):
+def extract_date_from_soup(soup_element):
+    """Quét tìm ngày tháng năm chính xác từ cấu trúc thẻ hoặc nội dung văn bản xung quanh bài viết"""
+    text = soup_element.get_text(separator=' ', strip=True)
+    
+    # 1. Tìm các định dạng ngày tháng rõ ràng (dd/mm/yyyy hoặc dd-mm-yyyy)
     match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', text)
     if match:
         d, m, y = match.groups()
         return f"{d.zfill(2)}/{m.zfill(2)}/{y}"
-    return datetime.now().strftime("%d/%m/%Y")
+        
+    # 2. Tìm trong các thẻ có class liên quan đến thời gian/ngày tháng
+    for tag in soup_element.find_all(['span', 'div', 'p', 'em', 'small', 'time']):
+        cls = str(tag.get('class', '')).lower()
+        if any(k in cls for k in ['date', 'time', 'post-meta', 'published', 'sự kiện']):
+            m_tag = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', tag.get_text())
+            if m_tag:
+                d, m, y = m_tag.groups()
+                return f"{d.zfill(2)}/{m.zfill(2)}/{y}"
+                
+    return None
 
 def auto_categorize(title, default_cat):
     t = title.lower()
@@ -43,6 +57,7 @@ def process_html_content(html, url, base_cat, source_name):
     main_content = soup.find('div', class_=re.compile(r'content|main|post-list|news|body|container', re.I))
     if not main_content: main_content = soup
     
+    # Duyệt qua các khối bài viết hoặc thẻ a
     for a in main_content.find_all('a', href=True):
         title = a.get_text(strip=True).replace('\n', ' ')
         href = a['href']
@@ -51,9 +66,14 @@ def process_html_content(html, url, base_cat, source_name):
             full_url = urljoin(url, href)
             if any(ext in full_url.lower() for ext in ['.jpg', '.png', '.pdf', '.doc', 'login', 'search', 'page=']): continue
             
-            parent = a.find_parent()
-            context_text = parent.get_text() if parent else title
-            real_date = extract_date(context_text)
+            # Lấy vùng chứa bài viết (thẻ cha cấp cao hơn một chút để quét ngày)
+            container = a.find_parent(['article', 'div', 'li', 'section']) or a.find_parent()
+            real_date = extract_date_from_soup(container) if container else None
+            
+            # Nếu vẫn không tìm thấy, quét tiếp toàn bộ trang hoặc dùng mặc định
+            if not real_date:
+                real_date = datetime.now().strftime("%d/%m/%Y")
+                
             final_cat = auto_categorize(title, base_cat)
             
             items.append({
@@ -86,7 +106,7 @@ def crawl_portal_dynamic(url, base_cat):
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
             page.goto(url, wait_until="networkidle")
-            page.wait_for_timeout(5000) # Đợi 5s cho Javascript render thông báo
+            page.wait_for_timeout(5000)
             html = page.content()
             browser.close()
             return process_html_content(html, url, base_cat, "Portal")
@@ -118,7 +138,7 @@ def crawl_facebook(page_name, limit=10):
             })
             if len(items) >= limit: break
     except Exception as e:
-        print(f"Lỗi quét Facebook (có thể bị chặn tạm thời): {e}")
+        print(f"Lỗi quét Facebook: {e}")
     return items
 
 def main():
@@ -126,7 +146,6 @@ def main():
     start = time.time()
     all_news = []
     
-    # 1. Quét Web tĩnh
     static_sources = [
         ("https://tnut.edu.vn/tin-tuc-su-kien", "Thông báo chung", "Website"),
         ("https://tnut.edu.vn/thong-bao-dao-tao", "Học tập", "Website"),
@@ -137,13 +156,9 @@ def main():
     for url, cat, source in static_sources:
         all_news.extend(crawl_static(url, cat, source))
         
-    # 2. Quét Portal bằng Trình duyệt ảo
     all_news.extend(crawl_portal_dynamic("http://portal.tnut.edu.vn/#/home", "Học tập"))
-    
-    # 3. Quét Fanpage Facebook
     all_news.extend(crawl_facebook("tnut.edu.vn", limit=10))
 
-    # Lọc trùng lặp bằng URL
     unique_news = []
     seen_urls = set()
     for item in all_news:
@@ -151,13 +166,12 @@ def main():
             seen_urls.add(item['originalUrl'])
             unique_news.append(item)
 
-    # Sắp xếp mới nhất lên đầu
     unique_news.sort(key=lambda x: parse_date(x['date']), reverse=True)
 
     with open('news.json', 'w', encoding='utf-8') as f:
         json.dump(unique_news, f, ensure_ascii=False, indent=4)
         
-    print(f"\n[HOÀN TẤT] Tổng số: {len(unique_news)} tin tức đa nền tảng. Chạy mất {round(time.time()-start, 2)}s")
+    print(f"\n[HOÀN TẤT] Tổng số: {len(unique_news)} tin tức. Chạy mất {round(time.time()-start, 2)}s")
 
 if __name__ == '__main__':
     main()

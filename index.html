@@ -60,16 +60,11 @@
                     <button onclick="openMapModal()" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 text-blue-800 bg-blue-50 border-blue-200 mr-2">
                         <i class="fas fa-map-marked-alt text-blue-600"></i><span class="hidden sm:inline">Sơ đồ TNUT</span>
                     </button>
-
                     <button id="tabNews" onclick="switchTab('news')" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 active">
                         <i class="fas fa-newspaper text-blue-600"></i><span class="hidden lg:inline">Tin tức</span>
                     </button>
                     <button id="tabServices" onclick="switchTab('services')" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 text-gray-800">
                         <i class="fas fa-hand-holding-heart text-emerald-600"></i><span class="hidden lg:inline">Tiện ích</span>
-                    </button>
-                    <button id="tabBookmarks" onclick="switchTab('bookmarks')" class="glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 text-gray-800">
-                        <i class="fas fa-heart text-red-500"></i><span class="hidden lg:inline">Đã lưu</span>
-                        <span id="bookmarkCount" class="bg-red-500 text-white text-[11px] rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
                     </button>
                 </div>
             </div>
@@ -98,23 +93,10 @@
                 <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl flex-shrink-0"><i class="fas fa-university"></i></div>
                 <div>
                     <h3 class="text-xl font-bold text-gray-800">Cẩm nang Tiện ích, Hành chính & Danh bạ TNUT</h3>
-                    <p class="text-xs md:text-sm text-gray-600">Tra cứu Hệ thống đào tạo, Dịch vụ hành chính, Các Khoa, CLB và Chính sách Học bổng.</p>
+                    <p class="text-xs md:text-sm text-gray-600">Tra cứu Hệ thống đào tạo, Dịch vụ hành chính, Các Khoa, CLB và Thông tin Liên lạc.</p>
                 </div>
             </div>
             <div class="flex flex-wrap gap-2 w-full mt-2" id="serviceCategoryFilters"></div>
-        </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 hidden" id="heroBookmarks">
-        <div class="glass-card p-6 border-l-4 border-red-500 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-2xl flex-shrink-0"><i class="fas fa-heart"></i></div>
-                <div>
-                    <h3 class="text-xl font-bold text-gray-800">Kho lưu trữ cá nhân</h3>
-                    <p class="text-xs md:text-sm text-gray-600">Danh mục CLB, Khoa hoặc thông báo bạn đã Bookmark.</p>
-                </div>
-            </div>
-            <button onclick="clearAllBookmarks()" class="glass-btn px-4 py-2 rounded-lg text-xs font-semibold text-red-600 hover:bg-red-50 flex items-center gap-2"><i class="fas fa-trash-alt"></i> Xóa tất cả</button>
         </div>
     </div>
 
@@ -130,12 +112,12 @@
                 <option value="Facebook">Facebook</option>
             </select>
             
-            <select id="monthFilter" class="glass px-3 py-1.5 rounded-lg text-xs md:text-sm outline-none cursor-pointer text-gray-700 font-medium">
-                <option value="Tất cả">Mọi thời gian</option>
-                <option value="11/2026">Tháng 11/2026</option>
-                <option value="10/2026">Tháng 10/2026</option>
-                <option value="09/2026">Tháng 09/2026</option>
-                <option value="08/2026">Tháng 08/2026</option>
+            <!-- Đổi Lọc Tháng thành Lọc Năm -->
+            <select id="yearFilter" class="glass px-3 py-1.5 rounded-lg text-xs md:text-sm outline-none cursor-pointer text-gray-700 font-medium">
+                <option value="Tất cả">Mọi năm</option>
+                <option value="2026">Năm 2026</option>
+                <option value="2025">Năm 2025</option>
+                <option value="2024">Năm 2024</option>
             </select>
         </div>
     </div>
@@ -150,7 +132,7 @@
         </div>
     </div>
 
-    <!-- POPUP BẢN ĐỒ (SƠ ĐỒ TRƯỜNG) -->
+    <!-- POPUP BẢN ĐỒ -->
     <div id="mapModal" class="fixed inset-0 z-[110] flex items-center justify-center hidden bg-gray-900/80 backdrop-blur-sm p-2 md:p-6">
         <div class="bg-white rounded-xl shadow-2xl relative max-w-6xl w-full flex flex-col overflow-hidden">
             <div class="p-4 border-b flex justify-between items-center bg-gray-50">
@@ -172,7 +154,6 @@
             <div class="bg-white p-3.5 rounded-xl inline-block shadow-inner mb-3 border border-gray-100">
                 <div id="qrcode" class="mx-auto flex justify-center"></div>
             </div>
-            <p class="text-[11px] text-gray-500 mb-4"><i class="fas fa-camera mr-1"></i> Quét bằng điện thoại hoặc Zalo</p>
             <a id="qrLinkToOriginal" href="#" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition shadow text-sm">
                 <i class="fas fa-external-link-alt mr-1.5"></i> Mở liên kết đích
             </a>
@@ -180,83 +161,30 @@
     </div>
 
     <script>
-        // --- 1. DỮ LIỆU TIN TỨC DỰ PHÒNG ---
+        // Mồi dữ liệu trống ban đầu
         const embeddedNewsData = [
-            { id: "def_01", title: "Lịch thực hành Đại cương Kỹ thuật dành cho sinh viên khóa K62", category: "Học tập", source: "Website", date: "05/11/2026", summary: "Lịch phân công ca học thực hành môn Đại cương Kỹ thuật...", originalUrl: "https://tnut.edu.vn/tin-tuc-su-kien/lich-thuc-hanh-k62.html" }
+            { id: "def_01", title: "Cổng thông tin đang lấy dữ liệu mới nhất...", category: "Học tập", source: "Website", date: "07/11/2026", summary: "Vui lòng đợi vài giây để hệ thống đồng bộ dữ liệu với máy chủ trường.", originalUrl: "https://tnut.edu.vn" }
         ];
 
-        // --- 2. CƠ SỞ DỮ LIỆU DỊCH VỤ HỖ TRỢ (ĐÃ GIỮ NGUYÊN HOÀN TOÀN) ---
+        // Dữ liệu Tiện ích tĩnh (CÓ THÊM PHẦN DANH BẠ LIÊN HỆ ĐẦY ĐỦ)
         const campusServicesData = [
-            { id: "hb_01", title: "Danh mục Chế độ Chính sách SV", category: "Chính sách & Học bổng", source: "Website", date: "Hỗ trợ SV", summary: "Tổng hợp các quy định về chế độ ưu tiên, chính sách xã hội cho sinh viên.", originalUrl: "https://www.tnut.edu.vn/blog/che-do-chinh-sach-12180800" },
-            { id: "hb_02", title: "Thông báo Miễn, Giảm Học phí 2026-2027", category: "Chính sách & Học bổng", source: "Website", date: "Học phí", summary: "Quy trình nộp hồ sơ hưởng miễn giảm học phí, hỗ trợ chi phí học tập...", originalUrl: "https://www.tnut.edu.vn/thong-bao-v-v-nop-ho-so-huong-mien-giam-hoc-phi-ho-tro-chi-phi-hoc-tap-ho-tro-hoc-tap-tro-cap-xa-hoi-nam-hoc-2026-2027-cho-sinh-vien-dai-hoc-chinh-quy-dz22336.html" },
-            { id: "hb_03", title: "Công khai Học bổng, Trợ cấp & Miễn giảm", category: "Chính sách & Học bổng", source: "Website", date: "Ba Công khai", summary: "Thông tin minh bạch về học bổng khuyến khích học tập và các khoản trợ cấp.", originalUrl: "https://www.tnut.edu.vn/blog/ba-cong-khai-16000000" },
-            { id: "hb_04", title: "Chính sách và Kết quả Học bổng 2026", category: "Chính sách & Học bổng", source: "Website", date: "Báo cáo", summary: "Tổng hợp kết quả xét duyệt học bổng, trợ cấp hàng năm.", originalUrl: "https://www.tnut.edu.vn/blog/3-chinh-sach-va-ket-qua-thuc-hien-chinh-sach-hang-nam-ve-tro-cap-va-mien-giam-hoc-phi-hoc-bong-doi-voi-nguoi-hoc-16140700" },
-            { id: "hb_05", title: "Thông báo & Tin tức Học bổng chung", category: "Chính sách & Học bổng", source: "Website", date: "Tin tức", summary: "Blog chuyên trang cập nhật các chương trình học bổng mới nhất.", originalUrl: "https://tnut.edu.vn/blog" },
-            { id: "hb_06", title: "Quy định Học phí năm học 2026-2027", category: "Chính sách & Học bổng", source: "Website", date: "Quy chế", summary: "Mức thu học phí tín chỉ chính thức và lộ trình tài chính năm 2026-2027.", originalUrl: "https://admission.tnut.edu.vn/thong-bao/hoc-phi-2026-2027" },
-            { id: "hb_07", title: "Hợp tác Doanh nghiệp - Học bổng Tài trợ", category: "Chính sách & Học bổng", source: "Website", date: "Doanh nghiệp", summary: "Học bổng từ các công ty, doanh nghiệp liên kết với nhà trường.", originalUrl: "http://htdn.tnut.edu.vn/" },
+            // DANH BẠ LIÊN HỆ CÁC KHOA, PHÒNG, BAN (MỚI)
+            { id: "ct_00", title: "Tổng đài Hotline Trường ĐHKTCN", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: office@tnut.edu.vn | Hotline toàn trường.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0208.384.7145" },
+            { id: "ct_01", title: "Phòng Đào tạo (Tư vấn Học vụ)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: daotao@tnut.edu.vn | Xử lý điểm, lịch học, lịch thi, bảo lưu, học lại.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0208.354.7989" },
+            { id: "ct_02", title: "Phòng Quản lý Người học & TT Thư viện (CTSV)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: phongcthssv@tnut.edu.vn | Giấy xác nhận SV, học bổng, thẻ SV.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0208.384.7173" },
+            { id: "ct_03", title: "Trung tâm Tuyển sinh & Truyền thông", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: tuyensinh@tnut.edu.vn | Hỗ trợ tư vấn tuyển sinh và làm thủ tục nhập học.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0912.847.588" },
+            { id: "ct_04", title: "Khoa Cơ khí (Văn phòng Khoa)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: hkythanh@tnut.edu.vn | Liên hệ tư vấn, giải đáp chuyên môn Cơ khí.", originalUrl: "https://cokhi.tnut.edu.vn", contact: "0984.194.198" },
+            { id: "ct_05", title: "Khoa Công nghệ Cơ điện & Điện tử", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: khoacongnghecd_dt@tnut.edu.vn | Phòng 112 - Nhà A5.", originalUrl: "https://meet.tnut.edu.vn", contact: "0902.064.199" },
+            { id: "ct_06", title: "Viện Nghiên cứu Công nghệ cao (RIAT)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: riat@tnut.edu.vn | Liên hệ nghiên cứu và hỗ trợ đồ án.", originalUrl: "https://riat.tnut.edu.vn", contact: "0280.384.7339" },
 
-            { id: "pb_01", title: "Danh bạ & Thông tin liên hệ TNUT", category: "Phòng ban Chức năng", source: "Website", date: "Danh bạ", summary: "Tra cứu số điện thoại, email của tất cả phòng ban, khoa, trung tâm.", originalUrl: "https://tnut.edu.vn/lien-he.html" },
-            { id: "pb_02", title: "Danh sách các Đơn vị Chức năng", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Sơ đồ tổ chức và danh mục các Phòng, Ban của nhà trường.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_03", title: "Phòng Quản lý Người học & TT Thư viện (CTSV)", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Giấy xác nhận, BHYT, rèn luyện, khen thưởng, kỷ luật sinh viên.", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "pb_04", title: "Phòng Kế hoạch Tài chính", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Thu nộp học phí, giải quyết hoàn tiền, xác nhận vay vốn.", originalUrl: "https://www.tnut.edu.vn/phong-ke-hoach-tai-chinh-lu1067.html" },
-            { id: "pb_05", title: "Phòng Đào tạo", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Quản lý kế hoạch học tập, thời khóa biểu, thi cử, tốt nghiệp.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_06", title: "Phòng Khoa học Công nghệ & HTQT", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Nghiên cứu khoa học sinh viên, chương trình trao đổi quốc tế.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_07", title: "Trung tâm Tuyển sinh và Truyền thông", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Tư vấn tuyển sinh, hệ liên thông, quản trị hình ảnh trường.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_08", title: "Trung tâm Hợp tác Doanh nghiệp", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Kết nối thực tập, giới thiệu việc làm cho sinh viên TNUT.", originalUrl: "http://htdn.tnut.edu.vn/" },
-            { id: "pb_09", title: "Trung tâm Dịch vụ Tổng hợp (Ký túc xá)", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Quản lý Ký túc xá, đời sống nội trú, dịch vụ căng tin.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-
-            { id: "dt_01", title: "Portal Sinh viên TNUT", category: "Đào tạo & Học tập", source: "Portal", date: "Hệ thống", summary: "Hệ thống tra cứu điểm, lịch thi, đăng ký tín chỉ và học phí.", originalUrl: "http://portal.tnut.edu.vn/" },
-            { id: "dt_02", title: "Hệ thống E-Learning (LMS)", category: "Đào tạo & Học tập", source: "Website", date: "Hệ thống", summary: "Hệ thống học tập trực tuyến, nộp bài, kiểm tra online.", originalUrl: "https://lms.tnut.edu.vn/" },
-            { id: "dt_03", title: "Danh mục khóa học E-Learning", category: "Đào tạo & Học tập", source: "Website", date: "Hệ thống", summary: "Tra cứu danh sách các lớp học phần đang mở trên LMS.", originalUrl: "https://lms.tnut.edu.vn/course/index.php" },
-            { id: "dt_04", title: "Hướng dẫn sử dụng Portal", category: "Đào tạo & Học tập", source: "Website", date: "Hướng dẫn", summary: "Cẩm nang quy trình dùng chức năng Portal cho sinh viên.", originalUrl: "https://www.tnut.edu.vn/blog/quy-trinh-huong-dan-18400000" },
-            { id: "dt_05", title: "Hướng dẫn đăng ký học phần", category: "Đào tạo & Học tập", source: "Website", date: "Hướng dẫn", summary: "Các bước thao tác để đăng ký tín chỉ thành công.", originalUrl: "https://tnut.edu.vn/huong-dan-dang-ky-hoc-tren-portal-dz20129.html" },
-            { id: "dt_06", title: "Trung tâm Thông tin Thư viện", category: "Đào tạo & Học tập", source: "Website", date: "Thư viện", summary: "Trang chủ Thư viện TNUT.", originalUrl: "https://tnut.edu.vn/" },
-            { id: "dt_07", title: "Hệ thống Học liệu số (Ebook)", category: "Đào tạo & Học tập", source: "Website", date: "Thư viện", summary: "Tra cứu tài liệu điện tử, giáo trình dùng chung.", originalUrl: "https://ebook.edu.vn/" },
-            { id: "dt_08", title: "Biểu mẫu & Quy chế sinh viên", category: "Đào tạo & Học tập", source: "Website", date: "Biểu mẫu", summary: "Tải các đơn xin nghỉ học, xin hoãn thi, phúc khảo...", originalUrl: "https://efa.tnut.edu.vn/news/sinh-vien.html" },
-
-            { id: "sv_01", title: "Thủ tục Xác nhận Sinh viên", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Xin cấp giấy xác nhận SV để vay vốn, tạm hoãn nghĩa vụ...", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "sv_02", title: "Thông tin Kết quả Rèn luyện", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Tra cứu và khiếu nại điểm đánh giá kết quả rèn luyện.", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "sv_03", title: "Thông tin Khen thưởng, Kỷ luật", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Quyết định khen thưởng, cảnh báo học vụ, kỷ luật SV.", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "sv_04", title: "Ký túc xá & Các khoản thu", category: "Dịch vụ Sinh viên", source: "Portal", date: "Đời sống", summary: "Tra cứu phí phòng ở KTX, tiền điện nước sinh hoạt.", originalUrl: "https://portal.tnut.edu.vn/" },
-            { id: "sv_05", title: "Hội Sinh viên TNUT", category: "Dịch vụ Sinh viên", source: "Website", date: "Đoàn - Hội", summary: "Trang thông tin của Hội Sinh viên và phong trào thi đua.", originalUrl: "https://www.tnut.edu.vn/hoi-sinh-vien-lu1098.html" },
-            { id: "srv_tts", title: "Trung tâm Số - Đại học Thái Nguyên", category: "Dịch vụ Sinh viên", source: "Website", date: "Thư viện", summary: "Thư viện số ĐHTN, học liệu điện tử.", originalUrl: "https://lrc.tnu.edu.vn/", contact: "Phan Đình Phùng, Thái Nguyên", mapUrl: "https://www.google.com/maps/search/?api=1&query=Trung+tâm+Số+Phan+Đình+Phùng+Thái+Nguyên" },
-
-            { id: "k_01", title: "Khoa Cơ khí", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website chính thức của Khoa Cơ khí.", originalUrl: "https://cokhi.tnut.edu.vn/" },
-            { id: "k_02", title: "Khoa Điện", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website chính thức của Khoa Điện.", originalUrl: "https://efa.tnut.edu.vn/" },
-            { id: "k_03", title: "Khoa Điện tử", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website chính thức của Khoa Điện tử.", originalUrl: "https://fee.tnut.edu.vn/" },
-            { id: "k_04", title: "Khoa Khoa học cơ bản và Ứng dụng", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Cơ bản.", originalUrl: "https://khoacoban.tnut.edu.vn/" },
-            { id: "k_05", title: "Khoa Kinh tế Công nghiệp", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa KTCN.", originalUrl: "https://ktcn.tnut.edu.vn/" },
-            { id: "k_06", title: "Khoa Ô tô và Năng lượng", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Ô tô.", originalUrl: "https://vee.tnut.edu.vn/" },
-            { id: "k_07", title: "Khoa Quốc tế", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Quốc tế.", originalUrl: "https://fit.tnut.edu.vn/" },
-            { id: "k_08", title: "Khoa Công nghệ Cơ Điện và Điện tử", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Cơ Điện & Điện tử.", originalUrl: "https://meet.tnut.edu.vn/" },
-            { id: "k_09", title: "Trung tâm Thực nghiệm", category: "Các Khoa TNUT", source: "Website", date: "Trung tâm", summary: "Xưởng thực hành chế tạo.", originalUrl: "https://workshop.tnut.edu.vn/" },
-            { id: "k_10", title: "Viện NC Công nghệ cao (RIAT)", category: "Các Khoa TNUT", source: "Website", date: "Viện NC", summary: "Viện nghiên cứu tự động hóa.", originalUrl: "https://riat.tnut.edu.vn/" },
-
-            { id: "c_01", title: "CLB STEM TNUT", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Khoa học, Kỹ thuật, Công nghệ.", originalUrl: "https://www.facebook.com/STEMTNUT" },
-            { id: "c_02", title: "CLB Sáng tạo", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Khởi nghiệp và chế tạo.", originalUrl: "https://www.facebook.com/tnutcreativeclub" },
-            { id: "c_03", title: "CLB Tiếng Anh", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Giao tiếp ngoại ngữ.", originalUrl: "https://www.facebook.com/tnut.englishclub" },
-            { id: "c_04", title: "CLB Sách và Hành động", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Phát triển văn hóa đọc.", originalUrl: "https://www.facebook.com/svhdtnut" },
-            { id: "c_05", title: "CLB Sinh viên 5 tốt", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Phong trào Sinh viên 5 tốt.", originalUrl: "https://www.facebook.com/groups/sv5tot.tnut" },
-            { id: "c_06", title: "CLB Guitar", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Âm nhạc, biểu diễn.", originalUrl: "https://www.facebook.com/GuitarTNUTfamily" },
-            { id: "c_07", title: "CLB Kết nối TNUT", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Sự kiện, truyền thông.", originalUrl: "https://www.facebook.com/clbketnoitnut" },
-            { id: "c_08", title: "CLB Truyền thông Media", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Nhiếp ảnh, quay phim.", originalUrl: "https://www.facebook.com/TNUTMEDIA" },
-            { id: "c_09", title: "CLB Võ thuật", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Karatedo, võ thuật.", originalUrl: "https://www.facebook.com/Tnutkaratedo/" },
-            { id: "c_10", title: "CLB Bóng rổ", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Bóng rổ sinh viên.", originalUrl: "https://www.facebook.com/groups/BongroTNUT" },
-            { id: "c_11", title: "CLB Chạy bộ", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "TNUT Runners Club.", originalUrl: "https://www.facebook.com/TNUT.RUNNERS.CLUB" },
-            { id: "c_12", title: "CLB Cầu lông", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Cầu lông sinh viên.", originalUrl: "https://www.facebook.com/groups/232076500678616" },
-            { id: "c_13", title: "CLB Đá cầu", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Đá cầu sinh viên.", originalUrl: "https://www.facebook.com/Clb-%C4%90%C3%A1-C%E1%BA%A7u-TNUT-Th%C3%A1i-Nguy%C3%AAn-1514633278825679" },
-            { id: "c_14", title: "CLB Cờ vua", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "TNUT Chess Club.", originalUrl: "https://www.facebook.com/CLB-C%E1%BB%9D-Vua-TNUT-TNUT-CHESS-CLUB--102435411711529" },
-            { id: "c_15", title: "CLB Mùa hè xanh", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Tình nguyện hè.", originalUrl: "https://www.facebook.com/SVTNmuahexanh" },
-            { id: "c_16", title: "CLB Hiến máu ABO", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Vận động hiến máu.", originalUrl: "https://www.facebook.com/ClbAboTnut" },
-            { id: "c_17", title: "CLB Vì cộng đồng XQM", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Tình nguyện xã hội.", originalUrl: "https://www.facebook.com/TinhNguyenXQM" },
-            { id: "c_18", title: "CLB Sức khỏe – Giới tính", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Tuyên truyền y tế.", originalUrl: "https://www.facebook.com/tuyentruyensuckhoegioitinhtnut" },
-
-            { id: "g_01", title: "Nhóm Facebook: Sinh viên TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm sinh viên chung.", originalUrl: "https://www.facebook.com/search/groups/?q=sinh%20vi%C3%AAn%20TNUT" },
-            { id: "g_02", title: "Nhóm Facebook: K60 TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm K60.", originalUrl: "https://www.facebook.com/search/groups/?q=K60%20TNUT" },
-            { id: "g_03", title: "Nhóm Facebook: K61 TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm K61.", originalUrl: "https://www.facebook.com/search/groups/?q=K61%20TNUT" },
-            { id: "g_04", title: "Nhóm Facebook: K62 TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm K62.", originalUrl: "https://www.facebook.com/search/groups/?q=K62%20TNUT" },
-            { id: "g_05", title: "Tra cứu: Fanpage các Khoa TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Fanpage", summary: "Tìm Fanpage các khoa.", originalUrl: "https://www.facebook.com/search/pages/?q=Khoa%20TNUT" },
-            { id: "g_06", title: "Tra cứu: Fanpage Câu lạc bộ TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Fanpage", summary: "Tìm Fanpage CLB.", originalUrl: "https://www.facebook.com/search/pages/?q=C%C3%A2u%20l%E1%BA%A1c%20b%E1%BB%99%20TNUT" }
+            // Dữ liệu cũ
+            { id: "dt_01", title: "Portal Sinh viên TNUT", category: "Đào tạo & Học tập", source: "Portal", date: "Hệ thống", summary: "Tra cứu điểm, đăng ký tín chỉ và học phí.", originalUrl: "http://portal.tnut.edu.vn/" },
+            { id: "dt_02", title: "Hệ thống E-Learning (LMS)", category: "Đào tạo & Học tập", source: "Website", date: "Hệ thống", summary: "Học tập trực tuyến, nộp bài, kiểm tra online.", originalUrl: "https://lms.tnut.edu.vn/" },
+            { id: "sv_01", title: "Thủ tục Xác nhận Sinh viên", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Xin cấp giấy xác nhận vay vốn, tạm hoãn nghĩa vụ...", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
+            { id: "sv_04", title: "Ký túc xá & Các khoản thu", category: "Dịch vụ Sinh viên", source: "Portal", date: "Đời sống", summary: "Tra cứu phí phòng ở KTX, tiền điện nước.", originalUrl: "https://portal.tnut.edu.vn/" },
+            { id: "srv_tts", title: "Trung tâm Số - Đại học Thái Nguyên", category: "Dịch vụ Sinh viên", source: "Website", date: "Thư viện", summary: "Thư viện số ĐHTN, học liệu điện tử.", originalUrl: "https://lrc.tnu.edu.vn/" },
+            { id: "hb_02", title: "Quy định Miễn, Giảm Học phí", category: "Chính sách & Học bổng", source: "Website", date: "Học phí", summary: "Hồ sơ hưởng miễn giảm học phí cho SV.", originalUrl: "https://www.tnut.edu.vn/" },
+            { id: "g_01", title: "Group: Sinh viên TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm sinh viên chung.", originalUrl: "https://www.facebook.com/search/groups/?q=sinh%20vi%C3%AAn%20TNUT" }
         ];
 
         let activeTab = 'news';
@@ -264,22 +192,21 @@
         let currentCategory = 'Tất cả';
         let currentSearch = '';
         let currentSource = 'Tất cả';
-        let currentMonth = 'Tất cả';
+        let currentYear = 'Tất cả'; // Biến năm
         let bookmarks = JSON.parse(localStorage.getItem('tnut_bookmarks')) || [];
         
         const newsCategories = ['Tất cả', 'Học tập', 'Tài chính', 'Thư viện', 'Hướng nghiệp', 'Thông báo chung'];
-        const serviceCategories = ['Tất cả', 'Đào tạo & Học tập', 'Chính sách & Học bổng', 'Phòng ban Chức năng', 'Dịch vụ Sinh viên', 'Các Khoa TNUT', 'Câu lạc bộ', 'Cộng đồng K60-K62'];
+        const serviceCategories = ['Tất cả', 'Danh bạ Liên hệ', 'Đào tạo & Học tập', 'Chính sách & Học bổng', 'Dịch vụ Sinh viên', 'Cộng đồng K60-K62'];
 
         function init() {
             renderCategoryFilters();
-            updateBookmarkCount();
             renderContent(); 
             fetchLatestNewsInBackground(); 
             
             document.getElementById('searchInput').addEventListener('input', handleSearch);
             document.getElementById('searchInputMobile').addEventListener('input', handleSearch);
             document.getElementById('sourceFilter').addEventListener('change', e => { currentSource = e.target.value; renderContent(); });
-            document.getElementById('monthFilter').addEventListener('change', e => { currentMonth = e.target.value; renderContent(); });
+            document.getElementById('yearFilter').addEventListener('change', e => { currentYear = e.target.value; renderContent(); });
         }
 
         async function fetchLatestNewsInBackground(manual = false) {
@@ -293,10 +220,10 @@
                     const fetched = await res.json();
                     if (Array.isArray(fetched) && fetched.length > 0) {
                         newsData = fetched;
-                        if (activeTab === 'news' || activeTab === 'bookmarks') renderContent();
+                        if (activeTab === 'news') renderContent();
                     }
                 }
-            } catch (e) { console.log('Dùng data tĩnh.'); }
+            } catch (e) { console.log('Sử dụng dữ liệu tĩnh.'); }
             finally {
                 if (manual) { if(icon1) icon1.classList.remove('fa-spin'); if(icon2) icon2.classList.remove('fa-spin'); }
             }
@@ -308,27 +235,21 @@
             currentSearch = '';
             document.getElementById('searchInput').value = '';
             document.getElementById('searchInputMobile').value = '';
-            document.getElementById('monthFilter').value = 'Tất cả';
-            currentMonth = 'Tất cả';
+            document.getElementById('yearFilter').value = 'Tất cả';
+            currentYear = 'Tất cả';
 
             document.getElementById('tabNews').className = `glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 ${tab === 'news' ? 'active' : 'text-gray-800'}`;
             document.getElementById('tabServices').className = `glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 ${tab === 'services' ? 'active' : 'text-gray-800'}`;
-            document.getElementById('tabBookmarks').className = `glass-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium text-xs sm:text-sm flex items-center gap-1.5 ${tab === 'bookmarks' ? 'active' : 'text-gray-800'}`;
 
             document.getElementById('heroNews').classList.toggle('hidden', tab !== 'news');
             document.getElementById('heroServices').classList.toggle('hidden', tab !== 'services');
-            document.getElementById('heroBookmarks').classList.toggle('hidden', tab !== 'bookmarks');
 
-            // Ẩn thanh chọn Tháng/Năm nếu ở tab Tiện ích hoặc Yêu thích
             if (tab === 'news') {
                 document.getElementById('sectionTitle').textContent = 'Tất cả thông báo mới nhất';
-                document.getElementById('monthFilter').classList.remove('hidden');
-            } else if (tab === 'services') {
-                document.getElementById('sectionTitle').textContent = 'Danh mục Tiện ích & Hỗ trợ';
-                document.getElementById('monthFilter').classList.add('hidden');
+                document.getElementById('yearFilter').classList.remove('hidden');
             } else {
-                document.getElementById('sectionTitle').textContent = 'Kho lưu trữ cá nhân';
-                document.getElementById('monthFilter').classList.add('hidden');
+                document.getElementById('sectionTitle').textContent = 'Danh mục Tiện ích & Hỗ trợ';
+                document.getElementById('yearFilter').classList.add('hidden');
             }
 
             renderCategoryFilters();
@@ -338,7 +259,6 @@
         function renderCategoryFilters() {
             const container = activeTab === 'services' ? document.getElementById('serviceCategoryFilters') : document.getElementById('categoryFilters');
             const catList = activeTab === 'services' ? serviceCategories : newsCategories;
-            if (activeTab === 'bookmarks') return;
 
             container.innerHTML = '';
             catList.forEach(cat => {
@@ -360,8 +280,7 @@
         function getSourceStyle(source) {
             if(source === 'Facebook') return { bg: 'bg-blue-100', text: 'text-blue-700', icon: 'fab fa-facebook' };
             if(source === 'Portal') return { bg: 'bg-purple-100', text: 'text-purple-700', icon: 'fas fa-graduation-cap' };
-            if(source === 'Website') return { bg: 'bg-emerald-100', text: 'text-emerald-700', icon: 'fas fa-globe' };
-            return { bg: 'bg-gray-100', text: 'text-gray-700', icon: 'fas fa-info-circle' };
+            return { bg: 'bg-emerald-100', text: 'text-emerald-700', icon: 'fas fa-globe' };
         }
 
         function parseDateString(dateStr) {
@@ -374,24 +293,23 @@
             const grid = document.getElementById('contentGrid');
             grid.innerHTML = '';
 
-            let dataSet = activeTab === 'news' ? newsData : (activeTab === 'services' ? campusServicesData : [...newsData, ...campusServicesData]);
+            let dataSet = activeTab === 'news' ? newsData : campusServicesData;
 
             let filtered = dataSet.filter(item => {
                 const matchCat = currentCategory === 'Tất cả' || item.category === currentCategory;
                 const matchSrc = currentSource === 'Tất cả' || item.source === currentSource || (currentSource === 'Portal' && item.source === 'Hệ thống'); 
                 const matchSearch = item.title.toLowerCase().includes(currentSearch) || item.summary.toLowerCase().includes(currentSearch);
-                const matchBm = activeTab !== 'bookmarks' || bookmarks.includes(item.id);
                 
-                // Lọc theo Tháng/Năm chỉ áp dụng cho tab Tin tức
-                let matchMonth = true;
-                if (activeTab === 'news' && currentMonth !== 'Tất cả') {
-                    matchMonth = item.date && item.date.includes(currentMonth);
+                // Lọc theo Năm
+                let matchYear = true;
+                if (activeTab === 'news' && currentYear !== 'Tất cả') {
+                    matchYear = item.date && item.date.includes(currentYear);
                 }
 
-                return matchCat && matchSrc && matchSearch && matchBm && matchMonth;
+                return matchCat && matchSrc && matchSearch && matchYear;
             });
 
-            // Chỉ sắp xếp theo thời gian khi ở tab Tin Tức
+            // Sắp xếp
             if (activeTab === 'news') {
                 filtered.sort((a, b) => parseDateString(b.date) - parseDateString(a.date));
             }
@@ -406,66 +324,36 @@
             }
 
             filtered.forEach(item => {
-                const isBookmarked = bookmarks.includes(item.id);
                 const s = getSourceStyle(item.source);
                 const card = document.createElement('div');
                 card.className = 'glass-card p-5 flex flex-col h-full group';
 
-                const contactInfo = item.contact ? `<div class="text-[10px] md:text-[11px] text-emerald-800 font-semibold mb-2 bg-emerald-50/70 p-2 rounded-lg border border-emerald-100"><i class="fas fa-map-marker-alt mr-1 text-emerald-600"></i> ${item.contact}</div>` : '';
-                const mapBtnHtml = item.mapUrl ? `<a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-emerald-700 font-medium hover:bg-emerald-100 flex items-center gap-1 shadow-sm"><i class="fas fa-map-marked-alt"></i> Bản đồ</a>` : '';
+                // Nếu là Danh bạ Liên hệ, tô màu nổi bật cho Hotline
+                const contactInfo = item.contact ? `<div class="mt-2 text-xs text-teal-800 font-bold bg-teal-50/80 p-2 rounded border border-teal-200"><i class="fas fa-phone-alt mr-1"></i> ${item.contact}</div>` : '';
 
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-2.5">
                         <span class="${s.bg} ${s.text} text-[10px] md:text-[11px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5"><i class="${s.icon}"></i> ${item.source}</span>
-                        <div class="flex gap-1 text-gray-400">
-                            <button class="btn-qr hover:text-blue-600 transition p-1.5" title="Mã QR"><i class="fas fa-qrcode text-base"></i></button>
-                            <button class="btn-bm transition p-1.5" title="Lưu bài"><i class="fas fa-heart text-base ${isBookmarked ? 'text-red-500' : 'hover:text-red-500'}"></i></button>
-                        </div>
                     </div>
-                    <div class="text-[10px] md:text-[11px] text-gray-500 mb-1.5 font-medium"><i class="far fa-calendar-alt mr-1"></i> ${item.date}</div>
+                    <div class="text-[10px] md:text-[11px] text-gray-500 mb-1.5 font-medium"><i class="far fa-calendar-alt mr-1"></i> ${item.date} • <span class="text-blue-700">${item.category}</span></div>
                     <h4 class="text-sm md:text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${item.title}</h4>
+                    <p class="text-[11px] md:text-xs text-gray-600 flex-grow line-clamp-3 leading-relaxed">${item.summary}</p>
                     ${contactInfo}
-                    <p class="text-[11px] md:text-xs text-gray-600 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.summary}</p>
                     
-                    <div class="mt-auto pt-3 border-t border-gray-200/60 flex flex-wrap justify-between items-center gap-2">
+                    <div class="mt-4 pt-3 border-t border-gray-200/60 flex flex-wrap justify-between items-center gap-2">
                         <a href="${item.originalUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[10px] md:text-[11px] font-semibold text-blue-600 hover:text-blue-800 transition">
                             Truy cập link <i class="fas fa-arrow-right ml-1 text-[9px]"></i>
                         </a>
-                        <div class="flex gap-1.5">
-                            ${mapBtnHtml}
-                            <button class="btn-qr-sub glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-blue-700 font-medium hover:bg-blue-100 flex items-center gap-1 shadow-sm">
-                                <i class="fas fa-qrcode"></i> QR
-                            </button>
-                        </div>
+                        <button class="btn-qr glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-blue-700 font-medium hover:bg-blue-100 flex items-center gap-1 shadow-sm">
+                            <i class="fas fa-qrcode"></i> QR
+                        </button>
                     </div>
                 `;
                 
-                card.querySelector('.btn-bm').onclick = () => toggleBookmark(item.id);
                 card.querySelector('.btn-qr').onclick = () => openQRModal(item.originalUrl, item.title);
-                card.querySelector('.btn-qr-sub').onclick = () => openQRModal(item.originalUrl, item.title);
                 grid.appendChild(card);
             });
         }
-
-        function toggleBookmark(id) {
-            const idx = bookmarks.indexOf(id);
-            if (idx > -1) bookmarks.splice(idx, 1);
-            else bookmarks.push(id);
-            localStorage.setItem('tnut_bookmarks', JSON.stringify(bookmarks));
-            updateBookmarkCount(); 
-            renderContent();
-        }
-
-        function clearAllBookmarks() {
-            if (confirm('Xóa tất cả mục đã lưu?')) {
-                bookmarks = [];
-                localStorage.removeItem('tnut_bookmarks');
-                updateBookmarkCount();
-                renderContent();
-            }
-        }
-
-        function updateBookmarkCount() { document.getElementById('bookmarkCount').textContent = bookmarks.length; }
 
         let qrcode = null;
         function openQRModal(url, title) {

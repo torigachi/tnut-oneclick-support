@@ -27,20 +27,20 @@ def get_real_date(url):
     soup = BeautifulSoup(html, 'html.parser')
     text = soup.get_text(separator=' ', strip=True)
     
-    # 1. Tìm cụm từ chỉ định ngày
+    # 1. Cụm từ ngày rõ ràng
     match_explicit = re.search(r'(?:ngày đăng|đăng ngày|cập nhật|thời gian)[\s:]*(\d{1,2}[/-]\d{1,2}[/-]\d{4})', text, re.IGNORECASE)
     if match_explicit:
         return match_explicit.group(1).replace('-', '/')
         
-    # 2. Tìm trong thẻ thời gian
+    # 2. Tìm trong thẻ meta hoặc class time
     for tag in soup.find_all(['span', 'div', 'p', 'em', 'i']):
         class_name = tag.get('class', [])
         if any(c.lower() in ['date', 'time', 'post-meta', 'published'] for c in class_name):
             m = re.search(r'\d{1,2}[/-]\d{1,2}[/-]\d{4}', tag.get_text())
             if m: return m.group().replace('-', '/')
 
-    # 3. Lấy ngày đầu tiên xuất hiện (nới lỏng điều kiện, lấy cả 2024)
-    matches = re.findall(r'\d{1,2}[/-]\d{1,2}[/-](?:2024|2025|2026|2027)', text)
+    # 3. Lấy ngày đầu tiên xuất hiện (chấp nhận từ năm 2023 trở lên để không bị xóa mất bài)
+    matches = re.findall(r'\d{1,2}[/-]\d{1,2}[/-](?:2023|2024|2025|2026|2027)', text)
     if matches:
         return matches[0].replace('-', '/')
         
@@ -80,10 +80,8 @@ def crawl_general(url, base_cat, source_name="Website"):
             if any(ext in full_url.lower() for ext in ['.jpg', '.png', '.pdf', '.doc', 'login', 'search', 'page=']): continue
 
             if not any(item['originalUrl'] == full_url for item in items):
-                print(f" -> Kiểm chứng tin: {title[:40]}...")
                 real_date = get_real_date(full_url)
                 
-                # Sửa bộ lọc: Lấy tin có ngày (kể cả 2024)
                 if real_date:
                     final_cat = auto_categorize(title, base_cat)
                     items.append({

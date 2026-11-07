@@ -22,31 +22,29 @@ def get_html(url):
         return ""
 
 def get_real_date(url):
-    """Vào thẳng bài viết gốc để dò tìm chính xác ngày đăng"""
     html = get_html(url)
     if not html: return None
-    
     soup = BeautifulSoup(html, 'html.parser')
     text = soup.get_text(separator=' ', strip=True)
     
-    # 1. Tìm các cụm từ chỉ định ngày đăng rõ ràng (ví dụ: Ngày đăng: 15/10/2026)
+    # 1. Tìm cụm từ chỉ định ngày
     match_explicit = re.search(r'(?:ngày đăng|đăng ngày|cập nhật|thời gian)[\s:]*(\d{1,2}[/-]\d{1,2}[/-]\d{4})', text, re.IGNORECASE)
     if match_explicit:
         return match_explicit.group(1).replace('-', '/')
         
-    # 2. Tìm trong các thẻ thường chứa thời gian
+    # 2. Tìm trong thẻ thời gian
     for tag in soup.find_all(['span', 'div', 'p', 'em', 'i']):
         class_name = tag.get('class', [])
         if any(c.lower() in ['date', 'time', 'post-meta', 'published'] for c in class_name):
             m = re.search(r'\d{1,2}[/-]\d{1,2}[/-]\d{4}', tag.get_text())
             if m: return m.group().replace('-', '/')
 
-    # 3. Nếu không có, lấy ngày hợp lý đầu tiên xuất hiện trong bài (ưu tiên năm 2025, 2026)
-    matches = re.findall(r'\d{1,2}[/-]\d{1,2}[/-](?:2025|2026|2027)', text)
+    # 3. Lấy ngày đầu tiên xuất hiện (nới lỏng điều kiện, lấy cả 2024)
+    matches = re.findall(r'\d{1,2}[/-]\d{1,2}[/-](?:2024|2025|2026|2027)', text)
     if matches:
         return matches[0].replace('-', '/')
         
-    return None # Bỏ qua nếu không xác định được ngày mới
+    return None
 
 def parse_date(date_str):
     try: return datetime.strptime(date_str, "%d/%m/%Y")
@@ -70,7 +68,6 @@ def crawl_general(url, base_cat, source_name="Website"):
     soup = BeautifulSoup(html, 'html.parser')
     items = []
     
-    # Ưu tiên lấy link từ khu vực nội dung chính để tránh rác (sidebar/footer)
     main_content = soup.find('div', class_=re.compile(r'content|main|post-list|news|body', re.I))
     if not main_content: main_content = soup
     
@@ -78,7 +75,6 @@ def crawl_general(url, base_cat, source_name="Website"):
         title = a.get_text(strip=True).replace('\n', ' ')
         href = a['href']
         
-        # Link chuẩn của 1 bài báo thường dài và không phải là thư mục gốc
         if len(title) > 15 and len(title.split()) >= 4 and not href.startswith(('javascript', '#', 'mailto')):
             full_url = urljoin(url, href)
             if any(ext in full_url.lower() for ext in ['.jpg', '.png', '.pdf', '.doc', 'login', 'search', 'page=']): continue
@@ -87,8 +83,8 @@ def crawl_general(url, base_cat, source_name="Website"):
                 print(f" -> Kiểm chứng tin: {title[:40]}...")
                 real_date = get_real_date(full_url)
                 
-                # BỘ LỌC TIN MỚI: Chỉ lấy tin xác định được ngày đăng và thuộc năm >= 2025 (loại bỏ rác 2024 về trước)
-                if real_date and ("2025" in real_date or "2026" in real_date or "2027" in real_date):
+                # Sửa bộ lọc: Lấy tin có ngày (kể cả 2024)
+                if real_date:
                     final_cat = auto_categorize(title, base_cat)
                     items.append({
                         "id": f"id_{len(items)}_{hash(full_url)}",
@@ -102,11 +98,10 @@ def crawl_general(url, base_cat, source_name="Website"):
     return items
 
 def main():
-    print("Bắt đầu cào dữ liệu (Thuật toán kiểm chứng ngày chuẩn)...")
+    print("Bắt đầu cào dữ liệu...")
     start = time.time()
     all_news = []
     
-    # Nguồn cấp đa dạng và đầy đủ nhất
     sources = [
         ("https://tnut.edu.vn/tin-tuc-su-kien", "Thông báo chung", "Website"),
         ("https://tnut.edu.vn/thong-bao-dao-tao", "Học tập", "Website"),
@@ -121,9 +116,8 @@ def main():
         print(f"\n--- Quét nguồn: {url} ---")
         crawled = crawl_general(url, cat, source)
         all_news.extend(crawled)
-        print(f"Hoàn thành nhánh này. Lọc được {len(crawled)} tin mới.")
+        print(f"Hoàn thành nhánh này. Lọc được {len(crawled)} tin.")
 
-    # Lọc trùng lặp dựa trên URL gốc
     unique_news = []
     seen_urls = set()
     for item in all_news:
@@ -131,13 +125,12 @@ def main():
             seen_urls.add(item['originalUrl'])
             unique_news.append(item)
 
-    # SẮP XẾP CHÍNH XÁC TỪ MỚI ĐẾN CŨ
     unique_news.sort(key=lambda x: parse_date(x['date']), reverse=True)
 
     with open('news.json', 'w', encoding='utf-8') as f:
         json.dump(unique_news, f, ensure_ascii=False, indent=4)
         
-    print(f"\n[THÀNH CÔNG] Đã lưu tổng cộng {len(unique_news)} tin tức mới, loại bỏ hoàn toàn rác 2024. Chạy mất {round(time.time()-start, 2)}s")
+    print(f"\n[THÀNH CÔNG] Đã lưu tổng cộng {len(unique_news)} tin tức. Chạy mất {round(time.time()-start, 2)}s")
 
 if __name__ == '__main__':
     main()

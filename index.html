@@ -18,7 +18,13 @@
         .glass-btn { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.65); backdrop-filter: blur(6px); transition: all 0.2s ease; cursor: pointer; }
         .glass-btn:hover { background: rgba(255, 255, 255, 0.9); }
         .glass-btn.active { background: #2563eb; color: white; border-color: #2563eb; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35); }
-        #mapModal img { max-height: 85vh; width: auto; max-width: 100%; object-fit: contain; }
+        
+        /* Hiệu ứng Copy Thành công */
+        .copy-success { animation: flashGreen 0.8s ease; color: #10b981 !important; }
+        @keyframes flashGreen {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
     </style>
 </head>
 <body class="pb-12">
@@ -48,7 +54,7 @@
                 <div class="hidden md:flex items-center gap-2 flex-1 max-w-md mx-8">
                     <div class="relative text-gray-600 focus-within:text-gray-800 flex-1">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-500"><i class="fas fa-search"></i></span>
-                        <input type="text" id="searchInput" class="glass w-full py-2 pl-10 pr-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-500" placeholder="Tìm kiếm Khoa, tiện ích, học bổng...">
+                        <input type="text" id="searchInput" class="glass w-full py-2 pl-10 pr-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-500" placeholder="Tìm kiếm Khoa, tiện ích, phòng ban, học bổng...">
                     </div>
                 </div>
 
@@ -84,7 +90,7 @@
                 <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl flex-shrink-0"><i class="fas fa-university"></i></div>
                 <div>
                     <h3 class="text-xl font-bold text-gray-800">Cẩm nang Tiện ích, Hành chính & Hỗ trợ sinh viên</h3>
-                    <p class="text-xs md:text-sm text-gray-600">Tra cứu nhanh Hệ thống đào tạo, Dịch vụ hành chính, Hướng dẫn học tập và Danh bạ TNUT.</p>
+                    <p class="text-xs md:text-sm text-gray-600">Tra cứu nhanh Hệ thống đào tạo, Dịch vụ hành chính, Hướng dẫn học tập và Danh bạ liên hệ TNUT.</p>
                 </div>
             </div>
             <div class="flex flex-wrap gap-2 w-full mt-2" id="serviceCategoryFilters"></div>
@@ -155,97 +161,88 @@
     </div>
 
     <script>
+        // DỮ LIỆU ĐÃ ĐƯỢC CẬP NHẬT ĐẦY ĐỦ TỪ BẢN DOCS (ĐỊA CHỈ PHÒNG, ĐIỆN THOẠI, EMAIL)
         const campusServicesData = [
-            // ================= LỐI TẮT PORTAL =================
-            { id: "p0_1", title: "Cổng thông tin Sinh viên (Portal Home)", category: "Đào tạo & Học tập", source: "Portal", date: "Hệ thống", summary: "Truy cập trực tiếp trang chủ Portal để xem Thông báo, Hướng dẫn, Đăng ký môn...", originalUrl: "http://portal.tnut.edu.vn/#/home" },
-            { id: "p0_2", title: "Tra cứu Cấu trúc Chương trình Đào tạo", category: "Đào tạo & Học tập", source: "Portal", date: "Hệ thống", summary: "Xem khung chương trình chuẩn cho khóa học của bạn.", originalUrl: "http://portal.tnut.edu.vn/#/thongtindaotao/cautruc" },
-            { id: "p0_3", title: "Tra cứu Kế hoạch Đào tạo (TKB)", category: "Đào tạo & Học tập", source: "Portal", date: "Hệ thống", summary: "Xem lịch trình học tập và kế hoạch mở môn học.", originalUrl: "http://portal.tnut.edu.vn/#/thongtindaotao/kehoach" },
+            // ================= THÔNG TIN CHUNG VÀ LIÊN HỆ TRƯỜNG =================
+            { id: "ct_00", title: "Tổng đài Hotline Trường ĐHKTCN", category: "Danh bạ Liên hệ", source: "Website", summary: "Hotline tiếp nhận thông tin toàn trường.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847145", email: "office@tnut.edu.vn", room: "Số 666, đường 3/2, phường Tích Lương, tỉnh Thái Nguyên" },
+            { id: "ct_fb_tuyensinh", title: "Facebook Tuyển sinh TNUT", category: "Danh bạ Liên hệ", source: "Facebook", summary: "Trang fanpage hỗ trợ tư vấn tuyển sinh chính thức.", originalUrl: "https://www.facebook.com/tnut.tuyensinh/" },
+            { id: "ct_fb_truong", title: "Facebook Trường ĐHKTCN", category: "Danh bạ Liên hệ", source: "Facebook", summary: "Trang thông tin chính thức của nhà trường.", originalUrl: "https://www.facebook.com/DHKTCN" },
 
-            // ================= DANH BẠ LIÊN HỆ =================
-            { id: "ct_00", title: "Tổng đài Hotline Trường ĐHKTCN", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: office@tnut.edu.vn | Hotline toàn trường.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0208.384.7145" },
-            { id: "ct_01", title: "Phòng Đào tạo (Tư vấn Học vụ)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: daotao@tnut.edu.vn | Xử lý điểm, lịch học, lịch thi, bảo lưu, học lại.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0208.354.7989" },
-            { id: "ct_02", title: "Phòng Quản lý Người học & TT Thư viện (CTSV)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: phongcthssv@tnut.edu.vn | Giấy xác nhận SV, học bổng, thẻ SV.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0208.384.7173" },
-            { id: "ct_03", title: "Trung tâm Tuyển sinh & Truyền thông", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: tuyensinh@tnut.edu.vn | Hỗ trợ tư vấn tuyển sinh và làm thủ tục nhập học.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0912.847.588" },
-            { id: "ct_04", title: "Khoa Cơ khí (Văn phòng Khoa)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: hkythanh@tnut.edu.vn | Liên hệ tư vấn, giải đáp chuyên môn Cơ khí.", originalUrl: "https://cokhi.tnut.edu.vn", contact: "0984.194.198" },
-            { id: "ct_05", title: "Khoa Công nghệ Cơ điện & Điện tử", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: khoacongnghecd_dt@tnut.edu.vn | Phòng 112 - Nhà A5.", originalUrl: "https://meet.tnut.edu.vn", contact: "0902.064.199" },
-            { id: "ct_06", title: "Viện Nghiên cứu Công nghệ cao (RIAT)", category: "Danh bạ Liên hệ", source: "Website", date: "Danh bạ", summary: "Email: riat@tnut.edu.vn | Liên hệ nghiên cứu và hỗ trợ đồ án.", originalUrl: "https://riat.tnut.edu.vn", contact: "0280.384.7339" },
-
-            // ================= WEBSITE VÀ HỆ THỐNG =================
-            { id: "p1_1", title: "Website TNUT (Trang chủ)", category: "Đào tạo & Học tập", source: "Website", date: "Hệ thống", summary: "Trang thông tin điện tử chính thức của Trường Đại học Kỹ thuật Công nghiệp.", originalUrl: "https://tnut.edu.vn/" },
-            { id: "dt_02", title: "Hệ thống E-Learning (LMS)", category: "Đào tạo & Học tập", source: "Website", date: "Hệ thống", summary: "Hệ thống học tập trực tuyến, nộp bài, kiểm tra online.", originalUrl: "https://lms.tnut.edu.vn/" },
-            { id: "dt_03", title: "Danh mục khóa học E-Learning", category: "Đào tạo & Học tập", source: "Website", date: "Hệ thống", summary: "Tra cứu danh sách các lớp học phần đang mở trên LMS.", originalUrl: "https://lms.tnut.edu.vn/course/index.php" },
-            { id: "dt_04", title: "Hướng dẫn sử dụng Portal", category: "Đào tạo & Học tập", source: "Website", date: "Hướng dẫn", summary: "Cẩm nang quy trình dùng chức năng Portal cho sinh viên.", originalUrl: "https://www.tnut.edu.vn/blog/quy-trinh-huong-dan-18400000" },
-            { id: "dt_05", title: "Hướng dẫn đăng ký học phần", category: "Đào tạo & Học tập", source: "Website", date: "Hướng dẫn", summary: "Các bước thao tác để đăng ký tín chỉ thành công.", originalUrl: "https://tnut.edu.vn/huong-dan-dang-ky-hoc-tren-portal-dz20129.html" },
-            { id: "dt_06", title: "Trung tâm Thông tin Thư viện", category: "Đào tạo & Học tập", source: "Website", date: "Thư viện", summary: "Trang chủ Thư viện TNUT.", originalUrl: "https://thuvien.tnut.edu.vn/" },
-            { id: "dt_07", title: "Hệ thống Học liệu số (Ebook)", category: "Đào tạo & Học tập", source: "Website", date: "Thư viện", summary: "Tra cứu tài liệu điện tử, giáo trình dùng chung.", originalUrl: "https://ebook.edu.vn/" },
-            { id: "dt_08", title: "Biểu mẫu & Quy chế sinh viên", category: "Đào tạo & Học tập", source: "Website", date: "Biểu mẫu", summary: "Tải các đơn xin nghỉ học, xin hoãn thi, phúc khảo...", originalUrl: "https://efa.tnut.edu.vn/news/sinh-vien.html" },
+            // ================= LỐI TẮT PORTAL VÀ HỆ THỐNG =================
+            { id: "p1_1", title: "Website TNUT (Trang chủ)", category: "Đào tạo & Học tập", source: "Website", summary: "Trang thông tin điện tử chính thức của Trường Đại học Kỹ thuật Công nghiệp.", originalUrl: "https://www.tnut.edu.vn/" },
+            { id: "p0_1", title: "Cổng đào tạo (Portal Home)", category: "Đào tạo & Học tập", source: "Portal", summary: "Truy cập trực tiếp trang chủ Cổng đào tạo TNUT.", originalUrl: "https://daotao.tnut.edu.vn/" },
+            { id: "dt_02", title: "Hệ thống E-Learning (LMS)", category: "Đào tạo & Học tập", source: "Website", summary: "Hệ thống học tập trực tuyến, nộp bài, kiểm tra online.", originalUrl: "https://lms.tnut.edu.vn/" },
+            { id: "p0_2", title: "Tra cứu Cấu trúc Chương trình Đào tạo", category: "Đào tạo & Học tập", source: "Portal", summary: "Xem khung chương trình chuẩn cho khóa học của bạn.", originalUrl: "http://portal.tnut.edu.vn/#/thongtindaotao/cautruc" },
+            { id: "dt_06", title: "Trung tâm Thông tin Thư viện", category: "Đào tạo & Học tập", source: "Website", summary: "Không gian học tập, nghiên cứu, giáo trình và học liệu.", originalUrl: "https://thuvien.tnut.edu.vn/" },
+            
+            // ================= HƯỚNG DẪN HỌC TẬP VÀ THỦ TỤC =================
+            { id: "hd_01", title: "Sổ tay sinh viên TNUT", category: "Đào tạo & Học tập", source: "Website", summary: "Tài liệu quan trọng hướng dẫn quy chế và thủ tục trong suốt khóa học.", originalUrl: "https://www.tnut.edu.vn/so-tay-sinh-vien-dz2319.html" },
+            { id: "dt_08", title: "Biểu mẫu & Quy chế sinh viên", category: "Dịch vụ Sinh viên", source: "Website", summary: "Tải các đơn xin nghỉ học, xin hoãn thi, phúc khảo...", originalUrl: "https://efa.tnut.edu.vn/news/sinh-vien.html" },
+            { id: "hd_nhaphoc", title: "Hướng dẫn nhập học K62 (PDF)", category: "Đào tạo & Học tập", source: "Website", summary: "Quy trình, hồ sơ thủ tục nhập học chi tiết.", originalUrl: "https://www.tnut.edu.vn/uploads/art/files/202408/16229/huong-dan-sv-nhap-hoc-truc-tiep.pdf" },
+            { id: "sv_xl_01", title: "Bảo lưu, thôi học, chuyển lớp", category: "Dịch vụ Sinh viên", source: "Website", summary: "Liên hệ Phòng Quản lý người học; phối hợp Phòng Đào tạo khi cần.", originalUrl: "https://tnut.edu.vn/lien-he.html", room: "Phòng 208 – Nhà Hiệu bộ", contact: "02083847173" },
+            { id: "sv_xl_02", title: "Khiếu nại, phản ánh chất lượng đào tạo", category: "Dịch vụ Sinh viên", source: "Website", summary: "Liên hệ Phòng Quản lý chất lượng để phản ánh.", originalUrl: "https://tnut.edu.vn/lien-he.html", room: "Phòng 306 – Nhà Hiệu bộ", contact: "02083547610" },
 
             // ================= HỌC BỔNG VÀ CHÍNH SÁCH =================
-            { id: "hb_01", title: "Danh mục Chế độ Chính sách SV", category: "Chính sách & Học bổng", source: "Website", date: "Hỗ trợ SV", summary: "Tổng hợp các quy định về chế độ ưu tiên, chính sách xã hội cho sinh viên.", originalUrl: "https://www.tnut.edu.vn/blog/che-do-chinh-sach-12180800" },
-            { id: "hb_02", title: "Thông báo Miễn, Giảm Học phí", category: "Chính sách & Học bổng", source: "Website", date: "Học phí", summary: "Quy trình nộp hồ sơ hưởng miễn giảm học phí, hỗ trợ chi phí học tập.", originalUrl: "https://www.tnut.edu.vn/thong-bao-v-v-nop-ho-so-huong-mien-giam-hoc-phi-ho-tro-chi-phi-hoc-tap-ho-tro-hoc-tap-tro-cap-xa-hoi-nam-hoc-2026-2027-cho-sinh-vien-dai-hoc-chinh-quy-dz22336.html" },
-            { id: "hb_03", title: "Công khai Học bổng, Trợ cấp & Miễn giảm", category: "Chính sách & Học bổng", source: "Website", date: "Ba Công khai", summary: "Thông tin minh bạch về học bổng khuyến khích học tập và các khoản trợ cấp.", originalUrl: "https://www.tnut.edu.vn/blog/ba-cong-khai-16000000" },
-            { id: "hb_04", title: "Chính sách và Kết quả Học bổng", category: "Chính sách & Học bổng", source: "Website", date: "Báo cáo", summary: "Tổng hợp kết quả xét duyệt học bổng, trợ cấp hàng năm.", originalUrl: "https://www.tnut.edu.vn/blog/3-chinh-sach-va-ket-qua-thuc-hien-chinh-sach-hang-nam-ve-tro-cap-va-mien-giam-hoc-phi-hoc-bong-doi-voi-nguoi-hoc-16140700" },
-            { id: "hb_05", title: "Thông báo & Tin tức Học bổng chung", category: "Chính sách & Học bổng", source: "Website", date: "Tin tức", summary: "Blog chuyên trang cập nhật các chương trình học bổng mới nhất.", originalUrl: "https://tnut.edu.vn/blog" },
-            { id: "hb_06", title: "Quy định Học phí năm học", category: "Chính sách & Học bổng", source: "Website", date: "Quy chế", summary: "Mức thu học phí tín chỉ chính thức và lộ trình tài chính.", originalUrl: "https://admission.tnut.edu.vn/thong-bao/hoc-phi-2026-2027" },
-            { id: "hb_07", title: "Hợp tác Doanh nghiệp - Học bổng Tài trợ", category: "Chính sách & Học bổng", source: "Website", date: "Doanh nghiệp", summary: "Học bổng từ các công ty, doanh nghiệp liên kết với nhà trường.", originalUrl: "http://htdn.tnut.edu.vn/" },
+            { id: "hb_01", title: "Danh mục Chế độ Chính sách SV", category: "Chính sách & Học bổng", source: "Website", summary: "Tổng hợp các quy định về chế độ ưu tiên, chính sách xã hội cho sinh viên.", originalUrl: "https://www.tnut.edu.vn/blog/che-do-chinh-sach-12180800" },
+            { id: "hb_02", title: "Thông báo Miễn, Giảm Học phí 2026-2027", category: "Chính sách & Học bổng", source: "Website", summary: "Quy trình nộp hồ sơ hưởng miễn giảm học phí, hỗ trợ chi phí học tập.", originalUrl: "https://www.tnut.edu.vn/thong-bao-v-v-nop-ho-so-huong-mien-giam-hoc-phi-ho-tro-chi-phi-hoc-tap-ho-tro-hoc-tap-tro-cap-xa-hoi-nam-hoc-2026-2027-cho-sinh-vien-dai-hoc-chinh-quy-dz22336.html" },
+            { id: "hb_06", title: "Thông báo thu Học phí và tiền KTX", category: "Chính sách & Học bổng", source: "Website", summary: "Mức thu học phí và tiền KTX chính thức.", originalUrl: "https://www.tnut.edu.vn/thong-bao-v-v-thuc-hien-thu-nop-hoc-phi-va-tien-ky-tuc-xa-dien-nuoc-cua-sinh-vien-dz18882.html" },
 
-            // ================= DỊCH VỤ SINH VIÊN =================
-            { id: "sv_01", title: "Thủ tục Xác nhận Sinh viên", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Xin cấp giấy xác nhận SV để vay vốn, tạm hoãn nghĩa vụ...", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "sv_02", title: "Thông tin Kết quả Rèn luyện", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Tra cứu và khiếu nại điểm đánh giá kết quả rèn luyện.", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "sv_03", title: "Thông tin Khen thưởng, Kỷ luật", category: "Dịch vụ Sinh viên", source: "Website", date: "Hành chính", summary: "Quyết định khen thưởng, cảnh báo học vụ, kỷ luật SV.", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "sv_04", title: "Ký túc xá & Các khoản thu", category: "Dịch vụ Sinh viên", source: "Website", date: "Đời sống", summary: "Tra cứu phí phòng ở KTX, tiền điện nước sinh hoạt.", originalUrl: "https://www.tnut.edu.vn/blog/noi-quy-ky-tuc-xa-tnut-11440000" },
-            { id: "sv_05", title: "Hội Sinh viên TNUT", category: "Dịch vụ Sinh viên", source: "Website", date: "Đoàn - Hội", summary: "Trang thông tin của Hội Sinh viên và phong trào thi đua.", originalUrl: "https://www.tnut.edu.vn/hoi-sinh-vien-lu1098.html" },
-            { id: "srv_tts", title: "Trung tâm Số - Đại học Thái Nguyên", category: "Dịch vụ Sinh viên", source: "Website", date: "Thư viện", summary: "Thư viện số ĐHTN, học liệu điện tử.", originalUrl: "https://lrc.tnu.edu.vn/", mapUrl: "https://www.google.com/maps/search/?api=1&query=Trung+tâm+Số+Phan+Đình+Phùng+Thái+Nguyên" },
+            // ================= DỊCH VỤ SINH VIÊN (KÝ TÚC XÁ, HÀNH CHÍNH) =================
+            { id: "sv_01", title: "Xin giấy Xác nhận Sinh viên", category: "Dịch vụ Sinh viên", source: "Website", summary: "Cấp giấy xác nhận SV vay vốn, tạm hoãn NVQS (Phòng QLNH).", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847173", room: "Phòng 208 – Nhà Hiệu bộ" },
+            { id: "sv_01b", title: "Thủ tục Cấp lại thẻ Sinh viên", category: "Dịch vụ Sinh viên", source: "Website", summary: "Trường hợp mất/hỏng thẻ sinh viên (Phòng QLNH).", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847173", room: "Phòng 208 – Nhà Hiệu bộ" },
+            { id: "sv_04", title: "Đăng ký KTX Online cho tân SV K62", category: "Dịch vụ Sinh viên", source: "Website", summary: "Hướng dẫn thủ tục đăng ký phòng ở KTX.", originalUrl: "https://fee.tnut.edu.vn/huong-dan-dang-ky-noi-tru-ky-tuc-xa-online-cho-tan-sinh-vien-k62-tnut-dt1843.html" },
 
-            // ================= PHÒNG BAN =================
-            { id: "pb_02", title: "Danh sách các Đơn vị Chức năng", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Sơ đồ tổ chức và danh mục các Phòng, Ban của nhà trường.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_03", title: "Phòng Quản lý Người học & TT Thư viện (CTSV)", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Giấy xác nhận, BHYT, rèn luyện, khen thưởng, kỷ luật sinh viên.", originalUrl: "https://www.tnut.edu.vn/phong-QLNH-TTTV-lu1062.html" },
-            { id: "pb_04", title: "Phòng Kế hoạch Tài chính", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Thu nộp học phí, giải quyết hoàn tiền, xác nhận vay vốn.", originalUrl: "https://www.tnut.edu.vn/phong-ke-hoach-tai-chinh-lu1067.html" },
-            { id: "pb_05", title: "Phòng Đào tạo", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Quản lý kế hoạch học tập, thời khóa biểu, thi cử, tốt nghiệp.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_06", title: "Phòng Khoa học Công nghệ & HTQT", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Nghiên cứu khoa học sinh viên, chương trình trao đổi quốc tế.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_07", title: "Trung tâm Tuyển sinh và Truyền thông", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Tư vấn tuyển sinh, hệ liên thông, quản trị hình ảnh trường.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
-            { id: "pb_08", title: "Trung tâm Hợp tác Doanh nghiệp", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Kết nối thực tập, giới thiệu việc làm cho sinh viên TNUT.", originalUrl: "http://htdn.tnut.edu.vn/" },
-            { id: "pb_09", title: "Trung tâm Dịch vụ Tổng hợp (Ký túc xá)", category: "Phòng ban Chức năng", source: "Website", date: "Hành chính", summary: "Quản lý Ký túc xá, đời sống nội trú, dịch vụ căng tin.", originalUrl: "https://www.tnut.edu.vn/don-vi-chuc-nang-or200100.html" },
+            // ================= PHÒNG BAN CHỨC NĂNG VÀ TRUNG TÂM =================
+            { id: "pb_05", title: "Phòng Đào tạo", category: "Phòng ban Chức năng", source: "Website", summary: "Đăng ký học phần, kế hoạch đào tạo, lịch thi, bảo lưu.", originalUrl: "https://daotao.tnut.edu.vn/", contact: "02083547989", email: "daotao@tnut.edu.vn", room: "Phòng 303 – Nhà Hiệu bộ" },
+            { id: "pb_03", title: "Phòng Quản lý người học & Thông tin thư viện", category: "Phòng ban Chức năng", source: "Website", summary: "Thẻ SV, giấy xác nhận, học bổng, miễn giảm học phí.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847173", email: "phongcthssv@tnut.edu.vn", room: "Phòng 208 – Nhà Hiệu bộ" },
+            { id: "pb_11", title: "Phòng Hành chính tổ chức", category: "Phòng ban Chức năng", source: "Website", summary: "Phụ trách hành chính, văn thư lưu trữ chung.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847145", email: "office@tnut.edu.vn", room: "Phòng 102 – Nhà Hiệu bộ" },
+            { id: "pb_04", title: "Phòng Kế hoạch Tài chính", category: "Phòng ban Chức năng", source: "Website", summary: "Thu học phí, lệ phí, hoàn học phí.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "0912501797", room: "Phòng 313 – Nhà Hiệu bộ" },
+            { id: "pb_12", title: "Phòng Khoa học Công nghệ và HTQT", category: "Phòng ban Chức năng", source: "Website", summary: "Nghiên cứu khoa học sinh viên, trao đổi quốc tế.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083547611", email: "r.intl@tnut.edu.vn", room: "Phòng 307 – Nhà Hiệu bộ" },
+            { id: "pb_06", title: "Phòng Quản lý cơ sở vật chất", category: "Phòng ban Chức năng", source: "Website", summary: "Cơ sở vật chất, phòng học, trang thiết bị.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847257", email: "phongqtpv@tnut.edu.vn", room: "Phòng 107 – Nhà Hiệu bộ" },
+            { id: "pb_13", title: "Phòng Quản lý chất lượng", category: "Phòng ban Chức năng", source: "Website", summary: "Đảm bảo chất lượng, tiếp nhận khiếu nại về đào tạo.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083547610", room: "Phòng 306 – Nhà Hiệu bộ" },
+            { id: "pb_07", title: "Trung tâm Tuyển sinh và Truyền thông", category: "Phòng ban Chức năng", source: "Website", summary: "Tư vấn và hỗ trợ thủ tục tuyển sinh.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847359", email: "tuyensinh@tnut.edu.vn", room: "Showroom cổng chính" },
+            { id: "pb_08", title: "Trung tâm Hợp tác Doanh nghiệp", category: "Phòng ban Chức năng", source: "Website", summary: "Hướng nghiệp, thực tập và kết nối việc làm.", originalUrl: "http://htdn.tnut.edu.vn/", contact: "0915434266", email: "office_htdn@tnut.edu.vn", room: "Tầng 1 – Nhà thư viện T1" },
+            { id: "pb_09", title: "Trung tâm Dịch vụ tổng hợp", category: "Phòng ban Chức năng", source: "Website", summary: "Dịch vụ căng tin, bãi xe và hỗ trợ đời sống.", originalUrl: "https://tnut.edu.vn/lien-he.html", contact: "02083847866", email: "ttdv@tnut.edu.vn", room: "Nhà A6" },
+            { id: "pb_10", title: "Trung tâm Thực nghiệm", category: "Phòng ban Chức năng", source: "Website", summary: "Khu vực xưởng thực hành, thí nghiệm kỹ thuật.", originalUrl: "https://workshop.tnut.edu.vn/", contact: "0986880993", email: "trungtamthucnghiem@tnut.edu.vn", room: "Xưởng Thực nghiệm" },
+            { id: "pb_14", title: "Viện Công nghệ giáo dục và Đào tạo mở", category: "Phòng ban Chức năng", source: "Website", summary: "Hỗ trợ học liệu số và các phương thức đào tạo hiện đại.", originalUrl: "https://etali.edu.vn/", contact: "02083847886", email: "etali@tnut.edu.vn", room: "Nhà A6" },
+            { id: "pb_15", title: "Viện Nghiên cứu phát triển Công nghệ cao", category: "Phòng ban Chức năng", source: "Website", summary: "Nghiên cứu chuyên sâu Kỹ thuật Công nghiệp (RIAT).", originalUrl: "https://riat.tnut.edu.vn/", contact: "02083847339", email: "riat@tnut.edu.vn", room: "Nhà A6" },
 
-            // ================= CÁC KHOA =================
-            { id: "k_01", title: "Khoa Cơ khí", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website chính thức của Khoa Cơ khí.", originalUrl: "https://cokhi.tnut.edu.vn/" },
-            { id: "k_02", title: "Khoa Điện", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website chính thức của Khoa Điện.", originalUrl: "https://efa.tnut.edu.vn/" },
-            { id: "k_03", title: "Khoa Điện tử", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website chính thức của Khoa Điện tử.", originalUrl: "https://fee.tnut.edu.vn/" },
-            { id: "k_04", title: "Khoa Khoa học cơ bản và Ứng dụng", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Cơ bản.", originalUrl: "https://khoacoban.tnut.edu.vn/" },
-            { id: "k_05", title: "Khoa Kinh tế Công nghiệp", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa KTCN.", originalUrl: "https://ktcn.tnut.edu.vn/" },
-            { id: "k_06", title: "Khoa Ô tô và Năng lượng", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Ô tô.", originalUrl: "https://vee.tnut.edu.vn/" },
-            { id: "k_07", title: "Khoa Quốc tế", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Quốc tế.", originalUrl: "https://fit.tnut.edu.vn/" },
-            { id: "k_08", title: "Khoa Công nghệ Cơ Điện và Điện tử", category: "Các Khoa TNUT", source: "Website", date: "Đơn vị đào tạo", summary: "Website Khoa Cơ Điện & Điện tử.", originalUrl: "https://meet.tnut.edu.vn/" },
-            { id: "k_09", title: "Trung tâm Thực nghiệm", category: "Các Khoa TNUT", source: "Website", date: "Trung tâm", summary: "Xưởng thực hành chế tạo.", originalUrl: "https://workshop.tnut.edu.vn/" },
-            { id: "k_10", title: "Viện NC Công nghệ cao (RIAT)", category: "Các Khoa TNUT", source: "Website", date: "Viện NC", summary: "Viện nghiên cứu tự động hóa.", originalUrl: "https://riat.tnut.edu.vn/" },
+            // ================= CÁC KHOA ĐÀO TẠO =================
+            { id: "k_01", title: "Khoa Cơ khí", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Cơ khí.", originalUrl: "https://cokhi.tnut.edu.vn/", contact: "02083847164", email: "khoacokhi@tnut.edu.vn", room: "Phòng 201 – Nhà TNGV" },
+            { id: "k_02", title: "Khoa Điện", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Điện.", originalUrl: "https://efa.tnut.edu.vn/", contact: "02083847684", email: "khoadien@tnut.edu.vn", room: "Phòng 205 – Nhà TNGV" },
+            { id: "k_03", title: "Khoa Điện tử", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Điện tử.", originalUrl: "https://fee.tnut.edu.vn/", contact: "02083847095", email: "fee@tnut.edu.vn", room: "Phòng 213 – Nhà TNGV" },
+            { id: "k_04", title: "Khoa Khoa học cơ bản và Ứng dụng", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Cơ bản.", originalUrl: "https://khoacoban.tnut.edu.vn/", contact: "02083547612", email: "khcb@tnut.edu.vn", room: "Nhà A5" },
+            { id: "k_05", title: "Khoa Kinh tế Công nghiệp", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa KTCN.", originalUrl: "https://ktcn.tnut.edu.vn/", contact: "0903222499", email: "ktcn@tnut.edu.vn", room: "Phòng 104 – Nhà A5" },
+            { id: "k_06", title: "Khoa Ô tô và Năng lượng", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Ô tô.", originalUrl: "https://vee.tnut.edu.vn/", contact: "02083847189", email: "ktot@tnut.edu.vn", room: "Khu vực Ô tô và Năng lượng" },
+            { id: "k_07", title: "Khoa Quốc tế", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Quốc tế.", originalUrl: "https://fit.tnut.edu.vn/", contact: "0984067555", email: "khoaquocte@tnut.edu.vn", room: "Phòng 103 – Nhà A4" },
+            { id: "k_08", title: "Khoa Công nghệ Cơ điện và Điện tử", category: "Các Khoa TNUT", source: "Website", summary: "Văn phòng Khoa Cơ Điện & Điện tử.", originalUrl: "https://meet.tnut.edu.vn/", contact: "0902064199", email: "khoacongnghecd_dt@tnut.edu.vn", room: "Phòng 112 – Nhà A5" },
 
-            // ================= CÂU LẠC BỘ =================
-            { id: "c_01", title: "CLB STEM TNUT", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Khoa học, Kỹ thuật, Công nghệ.", originalUrl: "https://www.facebook.com/STEMTNUT" },
-            { id: "c_02", title: "CLB Sáng tạo", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Khởi nghiệp và chế tạo.", originalUrl: "https://www.facebook.com/tnutcreativeclub" },
-            { id: "c_03", title: "CLB Tiếng Anh", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Giao tiếp ngoại ngữ.", originalUrl: "https://www.facebook.com/tnut.englishclub" },
-            { id: "c_04", title: "CLB Sách và Hành động", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Phát triển văn hóa đọc.", originalUrl: "https://www.facebook.com/svhdtnut" },
-            { id: "c_05", title: "CLB Sinh viên 5 tốt", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Phong trào Sinh viên 5 tốt.", originalUrl: "https://www.facebook.com/groups/sv5tot.tnut" },
-            { id: "c_06", title: "CLB Guitar", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Âm nhạc, biểu diễn.", originalUrl: "https://www.facebook.com/GuitarTNUTfamily" },
-            { id: "c_07", title: "CLB Kết nối TNUT", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Sự kiện, truyền thông.", originalUrl: "https://www.facebook.com/clbketnoitnut" },
-            { id: "c_08", title: "CLB Truyền thông Media", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Nhiếp ảnh, quay phim.", originalUrl: "https://www.facebook.com/TNUTMEDIA" },
-            { id: "c_09", title: "CLB Võ thuật", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Karatedo, võ thuật.", originalUrl: "https://www.facebook.com/Tnutkaratedo/" },
-            { id: "c_10", title: "CLB Bóng rổ", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Bóng rổ sinh viên.", originalUrl: "https://www.facebook.com/groups/BongroTNUT" },
-            { id: "c_11", title: "CLB Chạy bộ", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "TNUT Runners Club.", originalUrl: "https://www.facebook.com/TNUT.RUNNERS.CLUB" },
-            { id: "c_12", title: "CLB Cầu lông", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Cầu lông sinh viên.", originalUrl: "https://www.facebook.com/groups/232076500678616" },
-            { id: "c_13", title: "CLB Đá cầu", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "Đá cầu sinh viên.", originalUrl: "https://www.facebook.com/Clb-%C4%90%C3%A1-C%E1%BA%A7u-TNUT-Th%C3%A1i-Nguy%C3%AAn-1514633278825679" },
-            { id: "c_14", title: "CLB Cờ vua", category: "Câu lạc bộ", source: "Facebook", date: "Thể thao", summary: "TNUT Chess Club.", originalUrl: "https://www.facebook.com/CLB-C%E1%BB%9D-Vua-TNUT-TNUT-CHESS-CLUB--102435411711529" },
-            { id: "c_15", title: "CLB Mùa hè xanh", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Tình nguyện hè.", originalUrl: "https://www.facebook.com/SVTNmuahexanh" },
-            { id: "c_16", title: "CLB Hiến máu ABO", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Vận động hiến máu.", originalUrl: "https://www.facebook.com/ClbAboTnut" },
-            { id: "c_17", title: "CLB Vì cộng đồng XQM", category: "Câu lạc bộ", source: "Facebook", date: "Tình nguyện", summary: "Tình nguyện xã hội.", originalUrl: "https://www.facebook.com/TinhNguyenXQM" },
-            { id: "c_18", title: "CLB Sức khỏe – Giới tính", category: "Câu lạc bộ", source: "Facebook", date: "Đội nhóm", summary: "Tuyên truyền y tế.", originalUrl: "https://www.facebook.com/tuyentruyensuckhoegioitinhtnut" },
+            // ================= ĐOÀN HỘI VÀ CÂU LẠC BỘ =================
+            { id: "sv_05", title: "Đoàn Thanh niên – Hội Sinh viên", category: "Câu lạc bộ", source: "Website", summary: "Phong trào, tình nguyện, văn nghệ, thể thao.", originalUrl: "https://tnut.edu.vn/hoi-sinh-vien-lu1098.html", email: "Hoisinhvientnut@tnut.edu.vn", room: "Phòng 207 – Tòa T1" },
+            { id: "c_01", title: "CLB Sáng tạo (TNUT Creative Club)", category: "Câu lạc bộ", source: "Facebook", summary: "Học thuật, sáng tạo và nghiên cứu.", originalUrl: "https://www.facebook.com/tnutcreativeclub" },
+            { id: "c_02", title: "CLB STEM TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "Khoa học, Kỹ thuật, Công nghệ.", originalUrl: "https://www.facebook.com/STEMTNUT" },
+            { id: "c_03", title: "CLB Tiếng Anh (TNUT English Club)", category: "Câu lạc bộ", source: "Facebook", summary: "Giao tiếp, kỹ năng ngoại ngữ.", originalUrl: "https://www.facebook.com/tnut.englishclub" },
+            { id: "c_03b", title: "CLB Tiếng Nhật TJP", category: "Câu lạc bộ", source: "Facebook", summary: "Ngôn ngữ và văn hóa Nhật Bản.", originalUrl: "https://www.facebook.com/TJP.TNUT" },
+            { id: "c_04", title: "CLB Sách và Hành động", category: "Câu lạc bộ", source: "Facebook", summary: "Khuyến đọc và phát triển bản thân.", originalUrl: "https://www.facebook.com/svhdtnut" },
+            { id: "c_05", title: "CLB Sinh viên 5 tốt", category: "Câu lạc bộ", source: "Facebook", summary: "Hoạt động rèn luyện tiêu chí 5 tốt.", originalUrl: "https://www.facebook.com/groups/sv5tot.tnut" },
+            
+            { id: "c_16", title: "CLB Hiến máu tình nguyện ABO", category: "Câu lạc bộ", source: "Facebook", summary: "Vận động và tổ chức hiến máu nhân đạo.", originalUrl: "https://www.facebook.com/ClbAboTnut" },
+            { id: "c_17", title: "CLB Sinh viên Tình nguyện XQM", category: "Câu lạc bộ", source: "Facebook", summary: "Tình nguyện vì cộng đồng xã hội.", originalUrl: "https://www.facebook.com/TinhNguyenXQM" },
+            { id: "c_15", title: "CLB Sinh viên Tình nguyện Mùa hè xanh", category: "Câu lạc bộ", source: "Facebook", summary: "Tình nguyện các chiến dịch mùa hè.", originalUrl: "https://www.facebook.com/SVTNmuahexanh" },
+            { id: "c_07", title: "CLB Kết nối TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "Tổ chức sự kiện và truyền thông nội bộ.", originalUrl: "https://www.facebook.com/clbketnoitnut" },
+            { id: "c_18", title: "CLB Sức khỏe – Giới tính", category: "Câu lạc bộ", source: "Facebook", summary: "Tuyên truyền y tế và sức khỏe học đường.", originalUrl: "https://www.facebook.com/tuyentruyensuckhoegioitinhtnut" },
+            
+            { id: "c_06", title: "CLB Văn nghệ GALA Sinh viên", category: "Câu lạc bộ", source: "Facebook", summary: "Ca múa nhạc, nghệ thuật tổng hợp.", originalUrl: "https://www.facebook.com/galasvtnut" },
+            { id: "c_06b", title: "CLB Guitar", category: "Câu lạc bộ", source: "Facebook", summary: "Giao lưu âm nhạc và các nhạc cụ.", originalUrl: "https://www.facebook.com/GuitarTNUTfamily" },
+            { id: "c_08", title: "CLB Truyền thông Media", category: "Câu lạc bộ", source: "Facebook", summary: "Nhiếp ảnh, quay dựng video.", originalUrl: "https://www.facebook.com/TNUTMEDIA" },
 
-            // ================= CỘNG ĐỒNG =================
-            { id: "g_01", title: "Nhóm Facebook: Sinh viên TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm sinh viên chung.", originalUrl: "https://www.facebook.com/search/groups/?q=sinh%20vi%C3%AAn%20TNUT" },
-            { id: "g_02", title: "Nhóm Facebook: K60 TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm K60.", originalUrl: "https://www.facebook.com/search/groups/?q=K60%20TNUT" },
-            { id: "g_03", title: "Nhóm Facebook: K61 TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm K61.", originalUrl: "https://www.facebook.com/search/groups/?q=K61%20TNUT" },
-            { id: "g_04", title: "Nhóm Facebook: K62 TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Group", summary: "Nhóm K62.", originalUrl: "https://www.facebook.com/search/groups/?q=K62%20TNUT" },
-            { id: "g_05", title: "Tra cứu: Fanpage các Khoa TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Fanpage", summary: "Tìm Fanpage các khoa.", originalUrl: "https://www.facebook.com/search/pages/?q=Khoa%20TNUT" },
-            { id: "g_06", title: "Tra cứu: Fanpage Câu lạc bộ TNUT", category: "Cộng đồng K60-K62", source: "Facebook", date: "Fanpage", summary: "Tìm Fanpage CLB.", originalUrl: "https://www.facebook.com/search/pages/?q=C%C3%A2u%20l%E1%BA%A1c%20b%E1%BB%99%20TNUT" }
+            { id: "c_09", title: "CLB Võ thuật TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "Luyện tập võ thuật, nâng cao thể chất.", originalUrl: "https://www.facebook.com/Tnutkaratedo/" },
+            { id: "c_11", title: "CLB TNUT RUNNERS (Chạy bộ)", category: "Câu lạc bộ", source: "Facebook", summary: "Phong trào thể thao chạy bộ sinh viên.", originalUrl: "https://www.facebook.com/TNUT.RUNNERS.CLUB" },
+            { id: "c_10", title: "CLB Bóng rổ CNC", category: "Câu lạc bộ", source: "Facebook", summary: "Đội tuyển và phong trào bóng rổ.", originalUrl: "https://www.facebook.com/groups/BongroTNUT" },
+            { id: "c_12", title: "CLB Cầu lông TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "Câu lạc bộ cầu lông sinh viên.", originalUrl: "https://www.facebook.com/groups/232076500678616" },
+            { id: "c_14", title: "CLB Cờ vua TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "TNUT Chess Club.", originalUrl: "https://www.facebook.com/CLB-Cờ-Vua-TNUT-TNUT-CHESS-CLUB--102435411711529" },
+            { id: "c_13", title: "CLB Đá cầu TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "Hoạt động và thi đấu đá cầu.", originalUrl: "https://www.facebook.com/Clb-%C4%90%C3%A1-C%E1%BA%A7u-TNUT-Th%C3%A1i-Nguy%C3%AAn-1514633278825679" },
+            { id: "c_esport", title: "CLB Thể thao điện tử TNUT", category: "Câu lạc bộ", source: "Facebook", summary: "Phong trào E-sports, liên minh, giải đấu.", originalUrl: "https://www.facebook.com/CLB-Th%E1%BB%83-thao-%C4%90i%E1%BB%87n-t%E1%BB%AD-TNUT-102990908581461" }
         ];
 
         let activeTab = 'services';
@@ -254,7 +251,7 @@
         let currentSource = 'Tất cả';
         let bookmarks = JSON.parse(localStorage.getItem('tnut_bookmarks')) || [];
         
-        const serviceCategories = ['Tất cả', 'Danh bạ Liên hệ', 'Đào tạo & Học tập', 'Chính sách & Học bổng', 'Dịch vụ Sinh viên', 'Phòng ban Chức năng', 'Các Khoa TNUT', 'Câu lạc bộ', 'Cộng đồng K60-K62'];
+        const serviceCategories = ['Tất cả', 'Danh bạ Liên hệ', 'Đào tạo & Học tập', 'Chính sách & Học bổng', 'Dịch vụ Sinh viên', 'Phòng ban Chức năng', 'Các Khoa TNUT', 'Câu lạc bộ'];
 
         function init() {
             renderCategoryFilters();
@@ -264,6 +261,22 @@
             document.getElementById('searchInput').addEventListener('input', handleSearch);
             document.getElementById('searchInputMobile').addEventListener('input', handleSearch);
             document.getElementById('sourceFilter').addEventListener('change', e => { currentSource = e.target.value; renderContent(); });
+        }
+
+        // HÀM SAO CHÉP DỮ LIỆU ĐƯỢC CẢI TIẾN
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalHtml = btnElement.innerHTML;
+                btnElement.innerHTML = '<i class="fas fa-check"></i>';
+                btnElement.classList.add('copy-success');
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                    btnElement.classList.remove('copy-success');
+                }, 1500);
+            }).catch(err => {
+                console.error("Lỗi khi sao chép: ", err);
+                alert("Sao chép thất bại, trình duyệt không hỗ trợ.");
+            });
         }
 
         function switchTab(tab) {
@@ -344,8 +357,19 @@
                 const card = document.createElement('div');
                 card.className = 'glass-card p-5 flex flex-col h-full group';
 
-                const contactInfo = item.contact ? `<div class="mt-2 text-[11px] text-teal-800 font-bold bg-teal-50/80 p-2.5 rounded border border-teal-200"><i class="fas fa-phone-alt mr-1"></i> ${item.contact}</div>` : '';
-                const mapBtnHtml = item.mapUrl ? `<a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-emerald-700 font-medium hover:bg-emerald-100 flex items-center gap-1 shadow-sm"><i class="fas fa-map-marked-alt"></i> Bản đồ</a>` : '';
+                // TẠO KHỐI THÔNG TIN LIÊN HỆ GỒM ĐỊA CHỈ, SĐT, EMAIL VÀ NÚT COPY
+                const contactInfo = [];
+                if (item.room) {
+                    contactInfo.push(`<div class="flex items-center justify-between mb-1.5"><span class="text-gray-700 truncate pr-2" title="${item.room}"><i class="fas fa-map-marker-alt w-4 text-gray-500"></i> ${item.room}</span></div>`);
+                }
+                if (item.contact) {
+                    contactInfo.push(`<div class="flex items-center justify-between mb-1.5"><span class="text-emerald-700 font-bold"><i class="fas fa-phone-alt w-4 text-emerald-500"></i> ${item.contact}</span> <button onclick="copyToClipboard('${item.contact}', this)" class="text-gray-400 hover:text-emerald-600 transition p-1" title="Copy SĐT"><i class="far fa-copy text-sm"></i></button></div>`);
+                }
+                if (item.email) {
+                    contactInfo.push(`<div class="flex items-center justify-between"><span class="text-blue-700 font-medium truncate pr-2" title="${item.email}"><i class="fas fa-envelope w-4 text-blue-500"></i> ${item.email}</span> <button onclick="copyToClipboard('${item.email}', this)" class="text-gray-400 hover:text-blue-600 transition p-1" title="Copy Email"><i class="far fa-copy text-sm"></i></button></div>`);
+                }
+                
+                const contactHtml = contactInfo.length > 0 ? `<div class="mt-3 text-[11px] md:text-xs bg-white/70 p-3 rounded-lg border border-gray-100 shadow-sm leading-snug">${contactInfo.join('')}</div>` : '';
 
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-2.5">
@@ -355,27 +379,20 @@
                             <button class="btn-bm transition p-1.5" title="Lưu lại"><i class="fas fa-heart text-base ${isBookmarked ? 'text-red-500' : 'hover:text-red-500'}"></i></button>
                         </div>
                     </div>
-                    <div class="text-[10px] md:text-[11px] text-gray-500 mb-1.5 font-medium"><i class="fas fa-folder-open mr-1"></i> ${item.date}</div>
                     <h4 class="text-sm md:text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${item.title}</h4>
                     <p class="text-[11px] md:text-xs text-gray-600 flex-grow line-clamp-3 leading-relaxed">${item.summary}</p>
-                    ${contactInfo}
+                    
+                    ${contactHtml}
                     
                     <div class="mt-4 pt-3 border-t border-gray-200/60 flex flex-wrap justify-between items-center gap-2">
-                        <a href="${item.originalUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[10px] md:text-[11px] font-semibold text-blue-600 hover:text-blue-800 transition">
-                            Truy cập ngay <i class="fas fa-arrow-right ml-1 text-[9px]"></i>
+                        <a href="${item.originalUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[10px] md:text-[11px] font-semibold text-blue-600 hover:text-blue-800 transition bg-blue-50 px-3 py-1.5 rounded-full">
+                            Truy cập ngay <i class="fas fa-external-link-alt ml-1.5 text-[9px]"></i>
                         </a>
-                        <div class="flex gap-1.5">
-                            ${mapBtnHtml}
-                            <button class="btn-qr-sub glass-btn px-2.5 py-1 rounded-md text-[10px] md:text-[11px] text-blue-700 font-medium hover:bg-blue-100 flex items-center gap-1 shadow-sm">
-                                <i class="fas fa-qrcode"></i> QR
-                            </button>
-                        </div>
                     </div>
                 `;
                 
                 card.querySelector('.btn-bm').onclick = () => toggleBookmark(item.id);
                 card.querySelector('.btn-qr').onclick = () => openQRModal(item.originalUrl, item.title);
-                card.querySelector('.btn-qr-sub').onclick = () => openQRModal(item.originalUrl, item.title);
                 grid.appendChild(card);
             });
         }

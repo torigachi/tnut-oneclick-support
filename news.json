@@ -1,560 +1,596 @@
 [
     {
-        "id": "web_1",
-        "title": "Đại học thái nguyênTrường Đại học kỹ thuật công nghiệpThainguyen  university of technology",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/8/1965",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/"
-    },
-    {
-        "id": "web_2",
-        "title": "Đảm bảo chất lượng",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/bao-dam-chat-luong.html"
-    },
-    {
-        "id": "web_3",
-        "title": "Tham quan thực tế ảo",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/360-vr-tnut-truong-dai-hoc-ky-thuat-cong-nghiep-thai-nguyen-dz9593.html"
-    },
-    {
-        "id": "web_4",
-        "title": "Kỹ thuật cơ khí chương trình tiên tiến",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-co-khi-lz30.html"
-    },
-    {
-        "id": "web_5",
-        "title": "Kỹ thuật điện chương trình tiên tiến",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-dien-lz29.html"
-    },
-    {
-        "id": "web_6",
-        "title": "Kỹ thuật Cơ điện tử",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-dien-tu-lz25.html"
-    },
-    {
-        "id": "web_7",
-        "title": "Kỹ thuật Cơ khí động lực",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-o-to-lz44.html"
-    },
-    {
-        "id": "web_8",
-        "title": "Kỹ thuật điện tử viễn thông",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-vien-thong-lz45.html"
-    },
-    {
-        "id": "web_9",
-        "title": "Kỹ thuật điều khiển và tự động hóa",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tu-dong-hoa-lz47.html"
-    },
-    {
-        "id": "web_10",
-        "title": "Kỹ thuật máy tính",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/kythuat-may-tinh-lz48.html"
-    },
-    {
-        "id": "web_11",
-        "title": "Kỹ thuật môi trường",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-moi-truong-lz50.html"
-    },
-    {
-        "id": "web_12",
-        "title": "Kỹ thuật vật liệu",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-vat-lieu-lz49.html"
-    },
-    {
-        "id": "web_13",
-        "title": "Kỹ thuật xây dựng",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-xay-dung-lz51.html"
-    },
-    {
-        "id": "web_14",
-        "title": "Kỹ thuật điện, điện tử",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-dien-tu-lz1099.html"
-    },
-    {
-        "id": "web_15",
-        "title": "Công nghệ chế tạo máy",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/cong-nghe-che-tao-may-lz32.html"
-    },
-    {
-        "id": "web_16",
-        "title": "Công nghệ kỹ thuật cơ khí",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-co-khi-lz40.html"
-    },
-    {
-        "id": "web_17",
-        "title": "Công nghệ kỹ thuật điện điện tử",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dien-lz33.html"
-    },
-    {
-        "id": "web_18",
-        "title": "Công nghệ kỹ thuật điều khiển và tự động hóa",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dieu-khien-va-tu-dong-hoa-lz39.html"
-    },
-    {
-        "id": "web_19",
-        "title": "Công nghệ kỹ thuật ô tô",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-o-to-lz54.html"
-    },
-    {
-        "id": "web_20",
-        "title": "Chuyên ngành: Công nghệ điện tử, bán dẫn và vi mạch",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/cong-nghe-dien-tu-ban-dan-va-vi-mach-lz1095.html"
-    },
-    {
-        "id": "web_21",
-        "title": "Kinh tế công nghiệp",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/kinh-te-cong-nghiep-lz42.html"
-    },
-    {
-        "id": "web_22",
-        "title": "Quản lý công nghiệp",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/quan-ly-cong-nghiep-lz53.html"
-    },
-    {
-        "id": "web_23",
-        "title": "Kỹ thuật cơ khí động lực",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-dong-luc-dz2299.html"
-    },
-    {
-        "id": "web_24",
-        "title": "Kỹ thuật điện tử",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-dz2301.html"
-    },
-    {
-        "id": "web_25",
-        "title": "Kỹ thuật điều khiển & TĐH",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-tdh-dz2303.html"
-    },
-    {
-        "id": "web_26",
-        "title": "Kỹ thuật Viễn thông",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-vien-thong-dz2304.html"
-    },
-    {
-        "id": "web_27",
-        "title": "Kỹ thuật cơ điện tử",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-dien-tu-dz22297.html"
-    },
-    {
-        "id": "web_28",
-        "title": "Kỹ thuật máy tính",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-may-tinh-dz22299.html"
-    },
-    {
-        "id": "web_29",
-        "title": "Kỹ thuật điện - giảng dạy bằng tiếng Anh",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-giang-day-bang-tieng-anh-dz22300.html"
-    },
-    {
-        "id": "web_30",
-        "title": "Kỹ thuật cơ khí - giảng dạy bằng tiếng Anh",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-giang-day-bang-tieng-anh-dz22301.html"
-    },
-    {
-        "id": "web_31",
-        "title": "Kỹ thuật điều khiển và tự động hóa",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tdh-dz2298.html"
-    },
-    {
-        "id": "web_32",
-        "title": "Kỹ thuật điện tử",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-dz2296.html"
-    },
-    {
-        "id": "web_33",
-        "title": "Kỹ thuật cơ khí động lực",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-dong-luc-dz2294.html"
-    },
-    {
-        "id": "web_34",
-        "title": "Kỹ thuật xây dựng",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/chuong-trinh-dao-tao-tu-xa-ky-thuat-xay-dung-dz15179.html"
-    },
-    {
-        "id": "web_35",
-        "title": "Quản lý công nghiệp",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/chuong-trinh-dao-tao-tu-xa-quan-ly-cong-nghiep-dz15178.html"
-    },
-    {
-        "id": "web_36",
-        "title": "Kinh tế công nghiệp",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/chuong-trinh-dao-tao-tu-xa-nganh-kinh-te-cong-nghiep-dz15177.html"
-    },
-    {
-        "id": "web_37",
-        "title": "Kỹ thuật máy tính",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "19/5/2026",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://tnut.edu.vn/quyet-dinh-ban-hanh-chuong-trinh-dao-tao-tu-xa-nganh-ky-thuat-may-tinh-dz18912.html"
-    },
-    {
-        "id": "web_38",
-        "title": "Giấy phép thiết lập trang thông tin điện tử tổng hợp số 95/GP-TTĐT do Sở Văn hóa, Thế thao và Du lịch cấp ngày 19/5/2026",
-        "category": "Thông báo chung",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Thông báo chung] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "https://drive.google.com/file/d/17qilG4sEY6tnrnf7YPQsmz4pIPB76qwd/view?usp=sharing"
-    },
-    {
-        "id": "web_39",
-        "title": "Ngoại ngữ, kỹ năng",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/c1082/dao-tao-ngon-ngu-ky-nang"
-    },
-    {
-        "id": "web_40",
-        "title": "Thực tập, việc làm trong nước",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/c1080/thong-tin-thuc-tap-va-tuyen-dung-trong-nuoc"
-    },
-    {
-        "id": "web_41",
-        "title": "Việc làm trong nước",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-04-13/tap-doan-khkt-hong-hai-foxconn-thong-bao-tuyen-dung-can-bo-nguon-nam-2023-dt3224.html"
-    },
-    {
-        "id": "web_42",
-        "title": "TRƯỜNG ĐẠI HỌC KỸ THUẬT CÔNG NGHIỆP ĐÓN TIẾP VÀ LÀM VIỆC VỚI CÔNG TY TNHH LG DISPLAY VIỆT NAM HẢI PHÒNG",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "11/5/2026",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-05-11/truong-dai-hoc-ky-thuat-cong-nghiep-don-tiep-va-lam-viec-voi-cong-ty-tnhh-lg-display-viet-nam-hai-phong-dt5284.html"
-    },
-    {
-        "id": "web_43",
-        "title": "Thông báo về việc tổ chức Hội thảo du học, thực tập và việc làm tại CHLB Đức và Đài Loan",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-05-11/thong-bao-ve-viec-to-chuc-hoi-thao-du-hoc-thuc-tap-va-viec-lam-tai-chlb-duc-va-dai-loan-dt5283.html"
-    },
-    {
-        "id": "web_44",
-        "title": "Sinh viên TNUT trải nghiệm doanh nghiệp tại Công ty TNHH Wistron Infocomm Việt Nam",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-05-11/sinh-vien-tnut-trai-nghiem-doanh-nghiep-tai-cong-ty-tnhh-wistron-infocomm-viet-nam-dt5282.html"
-    },
-    {
-        "id": "web_45",
-        "title": "[THÔNG BÁO] V/v tổ chức chương trình tham quan trải nghiệm thực tế tại doanh nghiệp",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-04-29/thong-bao-vv-to-chuc-chuong-trinh-tham-quan-trai-nghiem-thuc-te-tai-doanh-nghiep-dt5281.html"
-    },
-    {
-        "id": "web_46",
-        "title": "CÔNG TY TNHH WISTRON INFOCOMM TRAO TẶNG TRƯỜNG ĐẠI HỌC KỸ THUẬT CÔNG NGHIỆP 01 XE Ô TÔ HYUNDAI SANTA FE",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-04-22/cong-ty-tnhh-wistron-infocomm-trao-tang-truong-dai-hoc-ky-thuat-cong-nghiep-01-xe-o-to-hyundai-santa-fe-dt5280.html"
-    },
-    {
-        "id": "web_47",
-        "title": "Thông báo về việc tổ chức các lớp tiếng Trung Quốc, Hàn Quốc",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-28/thong-bao-ve-viec-to-chuc-cac-lop-tieng-trung-quoc-han-quoc-dt4255.html"
-    },
-    {
-        "id": "web_48",
-        "title": "Thông báo tuyển sinh các lớp tiếng Trung",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-02-26/thong-bao-tuyen-sinh-cac-lop-tieng-trung-dt4249.html"
-    },
-    {
-        "id": "web_49",
-        "title": "Thông báo Chương trình học bổng \"Ươm mầm tài năng Pegatron\"",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-01-11/thong-bao-chuong-trinh-hoc-bong-uom-mam-tai-nang-pegatron-dt3247.html"
-    },
-    {
-        "id": "web_50",
-        "title": "Thông báo tổ chức các lớp tiếng Trung Quốc, Hàn Quốc",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-09-22/thong-bao-to-chuc-cac-lop-tieng-trung-quoc-han-quoc-dt3244.html"
-    },
-    {
-        "id": "web_51",
-        "title": "Thông báo tuyển sinh chương trình đào tạo định hướng Luxshare",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "08/01/2023",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2022-12-26/thong-bao-tuyen-sinh-chuong-trinh-dao-tao-dinh-huong-luxshare-dt3221.html"
-    },
-    {
-        "id": "web_52",
-        "title": "Thông tin tuyển dụng việc làm ngoài nước",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "02/03/2022",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/c1078/thong-tin-tuyen-dung-viec-lam-ngoai-nuoc"
-    },
-    {
-        "id": "web_53",
-        "title": "CHƯƠNG TRÌNH KỸ SƯ LÀM VIỆC TẠI NƯỚC NGOÀI",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-23/chuong-trinh-ky-su-lam-viec-tai-nuoc-ngoai-dt4254.html"
-    },
-    {
-        "id": "web_54",
-        "title": "Tuyển dụng Kỹ sư đi làm việt tại Nhật Bản - Diện nhân viên chính thức - Tháng 4/...",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "22/04/2023",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-04-23/tuyen-dung-ky-su-di-lam-viet-tai-nhat-ban-dien-nhan-vien-chinh-thuc-thang-42023-dt3232.html"
-    },
-    {
-        "id": "web_55",
-        "title": "Tuyển dụng kỹ sư làm việc tại Nhật Bản - Tháng 4/2023",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-04-16/tuyen-dung-ky-su-lam-viec-tai-nhat-ban-thang-42023-dt3229.html"
-    },
-    {
-        "id": "web_56",
-        "title": "Thông báo thực tập tốt nghiệp và thực tập trải nghiệm có hưởng lương tại các doa...",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "3/9/2022",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2022-08-31/thong-bao-thuc-tap-tot-nghiep-va-thuc-tap-trai-nghiem-co-huong-luong-tai-cac-doanh-nghiep-hoc-ky-i-nam-hoc-2022-2023-thang-9-nam-2022-dt3212.html"
-    },
-    {
-        "id": "web_57",
-        "title": "Thông báo về danh sách các doanh nghiệp tiếp nhận sinh viên thực tập tốt nghiệp ...",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-03-25/thong-bao-ve-danh-sach-cac-doanh-nghiep-tiep-nhan-sinh-vien-thuc-tap-tot-nghiep-co-huong-luong-hk3-nam-hoc-2025-2026-dt5278.html"
-    },
-    {
-        "id": "web_58",
-        "title": "Công ty TNHH Goertek Vina tuyển dụng Cán bộ nguồn - khối Nghiên cứu và Phát triể...",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-30/cong-ty-tnhh-goertek-vina-tuyen-dung-can-bo-nguon-khoi-nghien-cuu-va-phat-trien-dt4256.html"
-    },
-    {
-        "id": "web_59",
-        "title": "Thông báo tuyển dụng cán bộ nguồn công ty TNHH Goertek Vina",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "19/5/2024",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-17/thong-bao-tuyen-dung-can-bo-nguon-cong-ty-tnhh-goertek-vina-dt4253.html"
-    },
-    {
-        "id": "web_60",
-        "title": "Thông báo danh sách các doanh nghiệp tiếp nhận sinh viên thực tập tốt nghiệp có ...",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "Không rõ ngày",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-02-20/thong-bao-danh-sach-cac-doanh-nghiep-tiep-nhan-sinh-vien-thuc-tap-tot-nghiep-co-huong-luong-hoc-ky-3-nam-hoc-2023-2024-dt3248.html"
-    },
-    {
-        "id": "web_61",
-        "title": "Thông báo các doanh nghiệp tiếp nhận thực tập - Học kỳ 1 năm học 2023-2024",
-        "category": "Hướng nghiệp",
-        "source": "Website",
-        "date": "20/8/2023",
-        "summary": "[Hướng nghiệp] - Truy cập liên kết để xem chi tiết nội dung.",
-        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-08-24/thong-bao-cac-doanh-nghiep-tiep-nhan-thuc-tap-hoc-ky-1-nam-hoc-2023-2024-dt3243.html"
-    },
-    {
-        "id": "fb_tnut_1",
-        "title": "Hoạt động của Đoàn Thanh niên - Hội Sinh viên TNUT",
+        "id": "fb_1",
+        "title": "Hoạt động Đoàn Hội TNUT",
         "category": "Thông báo chung",
         "source": "Facebook",
         "date": "07/11/2026",
-        "summary": "Theo dõi các cuộc thi, hoạt động ngoại khóa mới nhất...",
+        "summary": "Cập nhật các phong trào, sự kiện sinh viên từ Fanpage chính thức.",
         "originalUrl": "https://www.facebook.com/Truongdhktcn"
+    },
+    {
+        "id": "id_0_893926277085739221",
+        "title": "Ngoại ngữ, kỹ năng",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/c1082/dao-tao-ngon-ngu-ky-nang"
+    },
+    {
+        "id": "id_1_-983797148211965119",
+        "title": "Thực tập, việc làm trong nước",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/c1080/thong-tin-thuc-tap-va-tuyen-dung-trong-nuoc"
+    },
+    {
+        "id": "id_2_4883590755540880674",
+        "title": "Việc l&#224;m trong nước",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-04-13/tap-doan-khkt-hong-hai-foxconn-thong-bao-tuyen-dung-can-bo-nguon-nam-2023-dt3224.html"
+    },
+    {
+        "id": "id_3_-8234879208841069665",
+        "title": "TRƯỜNG ĐẠI HỌC KỸ THUẬT CÔNG NGHIỆP ĐÓN TIẾP VÀ LÀM VIỆC VỚI CÔNG TY TNHH LG DISPLAY VIỆT NAM HẢI PHÒNG",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-05-11/truong-dai-hoc-ky-thuat-cong-nghiep-don-tiep-va-lam-viec-voi-cong-ty-tnhh-lg-display-viet-nam-hai-phong-dt5284.html"
+    },
+    {
+        "id": "id_4_8623684467755815214",
+        "title": "Thông báo về việc tổ chức Hội thảo du học, thực tập và việc làm tại CHLB Đức và Đài Loan",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-05-11/thong-bao-ve-viec-to-chuc-hoi-thao-du-hoc-thuc-tap-va-viec-lam-tai-chlb-duc-va-dai-loan-dt5283.html"
+    },
+    {
+        "id": "id_5_3042422881475564592",
+        "title": "Sinh viên TNUT trải nghiệm doanh nghiệp tại Công ty TNHH Wistron Infocomm Việt Nam",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-05-11/sinh-vien-tnut-trai-nghiem-doanh-nghiep-tai-cong-ty-tnhh-wistron-infocomm-viet-nam-dt5282.html"
+    },
+    {
+        "id": "id_6_5683104422260222296",
+        "title": "[THÔNG BÁO] V/v tổ chức chương trình tham quan trải nghiệm thực tế tại doanh nghiệp",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-04-29/thong-bao-vv-to-chuc-chuong-trinh-tham-quan-trai-nghiem-thuc-te-tai-doanh-nghiep-dt5281.html"
+    },
+    {
+        "id": "id_7_3813947269286923615",
+        "title": "CÔNG TY TNHH WISTRON INFOCOMM TRAO TẶNG TRƯỜNG ĐẠI HỌC KỸ THUẬT CÔNG NGHIỆP 01 XE Ô TÔ HYUNDAI SANTA FE",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-04-22/cong-ty-tnhh-wistron-infocomm-trao-tang-truong-dai-hoc-ky-thuat-cong-nghiep-01-xe-o-to-hyundai-santa-fe-dt5280.html"
+    },
+    {
+        "id": "id_8_-6945409759338892613",
+        "title": "Thông báo về việc tổ chức các lớp tiếng Trung Quốc, Hàn Quốc",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-28/thong-bao-ve-viec-to-chuc-cac-lop-tieng-trung-quoc-han-quoc-dt4255.html"
+    },
+    {
+        "id": "id_9_1641113995608180800",
+        "title": "Thông báo tuyển sinh các lớp tiếng Trung",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-02-26/thong-bao-tuyen-sinh-cac-lop-tieng-trung-dt4249.html"
+    },
+    {
+        "id": "id_10_-6069037802698258996",
+        "title": "Thông báo Chương trình học bổng \"Ươm mầm tài năng Pegatron\"",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-01-11/thong-bao-chuong-trinh-hoc-bong-uom-mam-tai-nang-pegatron-dt3247.html"
+    },
+    {
+        "id": "id_11_7830213836166586381",
+        "title": "Thông báo tổ chức các lớp tiếng Trung Quốc, Hàn Quốc",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-09-22/thong-bao-to-chuc-cac-lop-tieng-trung-quoc-han-quoc-dt3244.html"
+    },
+    {
+        "id": "id_12_-2202119908547314579",
+        "title": "Thông báo tuyển sinh chương trình đào tạo định hướng Luxshare",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2022-12-26/thong-bao-tuyen-sinh-chuong-trinh-dao-tao-dinh-huong-luxshare-dt3221.html"
+    },
+    {
+        "id": "id_13_854988063278806971",
+        "title": "Th&#244;ng tin tuyển dụng việc l&#224;m ngo&#224;i nước",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/c1078/thong-tin-tuyen-dung-viec-lam-ngoai-nuoc"
+    },
+    {
+        "id": "id_14_6387574894474693508",
+        "title": "CHƯƠNG TRÌNH KỸ SƯ LÀM VIỆC TẠI NƯỚC NGOÀI",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-23/chuong-trinh-ky-su-lam-viec-tai-nuoc-ngoai-dt4254.html"
+    },
+    {
+        "id": "id_15_4746578002310901009",
+        "title": "Tuyển dụng Kỹ sư đi làm việt tại Nhật Bản - Diện nhân viên chính thức - Tháng 4/...",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-04-23/tuyen-dung-ky-su-di-lam-viet-tai-nhat-ban-dien-nhan-vien-chinh-thuc-thang-42023-dt3232.html"
+    },
+    {
+        "id": "id_16_-7041307236464973501",
+        "title": "Tuyển dụng kỹ sư làm việc tại Nhật Bản - Tháng 4/2023",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-04-16/tuyen-dung-ky-su-lam-viec-tai-nhat-ban-thang-42023-dt3229.html"
+    },
+    {
+        "id": "id_17_-6666247791310373402",
+        "title": "Thông báo thực tập tốt nghiệp và thực tập trải nghiệm có hưởng lương tại các doa...",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2022-08-31/thong-bao-thuc-tap-tot-nghiep-va-thuc-tap-trai-nghiem-co-huong-luong-tai-cac-doanh-nghiep-hoc-ky-i-nam-hoc-2022-2023-thang-9-nam-2022-dt3212.html"
+    },
+    {
+        "id": "id_18_-6880366410684756258",
+        "title": "Thông báo về danh sách các doanh nghiệp tiếp nhận sinh viên thực tập tốt nghiệp ...",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2026-03-25/thong-bao-ve-danh-sach-cac-doanh-nghiep-tiep-nhan-sinh-vien-thuc-tap-tot-nghiep-co-huong-luong-hk3-nam-hoc-2025-2026-dt5278.html"
+    },
+    {
+        "id": "id_19_4701187979507316309",
+        "title": "Công ty TNHH Goertek Vina tuyển dụng Cán bộ nguồn - khối Nghiên cứu và Phát triể...",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-30/cong-ty-tnhh-goertek-vina-tuyen-dung-can-bo-nguon-khoi-nghien-cuu-va-phat-trien-dt4256.html"
+    },
+    {
+        "id": "id_20_7510326834699455408",
+        "title": "Thông báo tuyển dụng cán bộ nguồn công ty TNHH Goertek Vina",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-05-17/thong-bao-tuyen-dung-can-bo-nguon-cong-ty-tnhh-goertek-vina-dt4253.html"
+    },
+    {
+        "id": "id_21_-4687841503447882781",
+        "title": "Thông báo danh sách các doanh nghiệp tiếp nhận sinh viên thực tập tốt nghiệp có ...",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2024-02-20/thong-bao-danh-sach-cac-doanh-nghiep-tiep-nhan-sinh-vien-thuc-tap-tot-nghiep-co-huong-luong-hoc-ky-3-nam-hoc-2023-2024-dt3248.html"
+    },
+    {
+        "id": "id_22_1282817983285453356",
+        "title": "Thông báo các doanh nghiệp tiếp nhận thực tập - Học kỳ 1 năm học 2023-2024",
+        "category": "Hướng nghiệp",
+        "source": "Website",
+        "date": "01/01/2026",
+        "summary": "[Hướng nghiệp] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "http://htdn.tnut.edu.vn/tin-tuc/2023-08-24/thong-bao-cac-doanh-nghiep-tiep-nhan-thuc-tap-hoc-ky-1-nam-hoc-2023-2024-dt3243.html"
+    },
+    {
+        "id": "id_0_-2062974330473585279",
+        "title": "Đại học thái nguyên Trường Đại học kỹ thuật công nghiệpThainguyen university of technology",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/"
+    },
+    {
+        "id": "id_1_7433928382834934248",
+        "title": "Đảm bảo chất lượng",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/bao-dam-chat-luong.html"
+    },
+    {
+        "id": "id_2_2534861471843775594",
+        "title": "Tham quan thực tế ảo",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/360-vr-tnut-truong-dai-hoc-ky-thuat-cong-nghiep-thai-nguyen-dz9593.html"
+    },
+    {
+        "id": "id_3_6854210981272182894",
+        "title": "Kỹ thuật cơ kh&#237; chương tr&#236;nh ti&#234;n tiến",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-co-khi-lz30.html"
+    },
+    {
+        "id": "id_4_4146560401061867709",
+        "title": "Kỹ thuật điện chương tr&#236;nh ti&#234;n tiến",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-tien-tien-nganh-ky-thuat-dien-lz29.html"
+    },
+    {
+        "id": "id_5_6131863251562332643",
+        "title": "Kỹ thuật Cơ điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-dien-tu-lz25.html"
+    },
+    {
+        "id": "id_6_-2939084215170998643",
+        "title": "Kỹ thuật cơ kh&#237;",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-lz43.html"
+    },
+    {
+        "id": "id_7_6101701734087289049",
+        "title": "Kỹ thuật Cơ kh&#237; động lực",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-o-to-lz44.html"
+    },
+    {
+        "id": "id_8_4123277002002054604",
+        "title": "Kỹ thuật điện tử viễn th&#244;ng",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-vien-thong-lz45.html"
+    },
+    {
+        "id": "id_9_-1820871056030757083",
+        "title": "Kỹ thuật điều khiển v&#224; tự động h&#243;a",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tu-dong-hoa-lz47.html"
+    },
+    {
+        "id": "id_10_-103142051979100320",
+        "title": "Kỹ thuật m&#225;y t&#237;nh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/kythuat-may-tinh-lz48.html"
+    },
+    {
+        "id": "id_11_1745162492842534285",
+        "title": "Kỹ thuật m&#244;i trường",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-moi-truong-lz50.html"
+    },
+    {
+        "id": "id_12_-415593273349593214",
+        "title": "Kỹ thuật vật liệu",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-vat-lieu-lz49.html"
+    },
+    {
+        "id": "id_13_-5569308590225062107",
+        "title": "Kỹ thuật x&#226;y dựng",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-xay-dung-lz51.html"
+    },
+    {
+        "id": "id_14_3627230031130118908",
+        "title": "Kỹ thuật điện, điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-dien-tu-lz1099.html"
+    },
+    {
+        "id": "id_15_7051364025599421097",
+        "title": "C&#244;ng nghệ chế tạo m&#225;y",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-che-tao-may-lz32.html"
+    },
+    {
+        "id": "id_16_7669898014125542210",
+        "title": "C&#244;ng nghệ kỹ thuật cơ kh&#237;",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-co-khi-lz40.html"
+    },
+    {
+        "id": "id_17_-6515918130166849656",
+        "title": "C&#244;ng nghệ kỹ thuật điện điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dien-lz33.html"
+    },
+    {
+        "id": "id_18_2926143811425949105",
+        "title": "C&#244;ng nghệ kỹ thuật điều khiển v&#224; tự động h&#243;a",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-dieu-khien-va-tu-dong-hoa-lz39.html"
+    },
+    {
+        "id": "id_19_6557806727614827937",
+        "title": "C&#244;ng nghệ kỹ thuật &#244; t&#244;",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-ky-thuat-o-to-lz54.html"
+    },
+    {
+        "id": "id_20_8293658417196203838",
+        "title": "Chuy&#234;n ng&#224;nh: C&#244;ng nghệ điện tử, b&#225;n dẫn v&#224; vi mạch",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/cong-nghe-dien-tu-ban-dan-va-vi-mach-lz1095.html"
+    },
+    {
+        "id": "id_21_-7483474674277288841",
+        "title": "Kinh tế c&#244;ng nghiệp",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/kinh-te-cong-nghiep-lz42.html"
+    },
+    {
+        "id": "id_22_-2577699956602903572",
+        "title": "Quản l&#253; c&#244;ng nghiệp",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/quan-ly-cong-nghiep-lz53.html"
+    },
+    {
+        "id": "id_23_-4920608784444390503",
+        "title": "Kỹ thuật Cơ kh&#237;",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-dz2300.html"
+    },
+    {
+        "id": "id_24_-225020617838869050",
+        "title": "Kỹ thuật cơ kh&#237; động lực",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-dong-luc-dz2299.html"
+    },
+    {
+        "id": "id_25_7423742899366747915",
+        "title": "Kỹ thuật điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-dz2301.html"
+    },
+    {
+        "id": "id_26_-2340996697971495308",
+        "title": "Kỹ thuật điều khiển &amp; TĐH",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-tdh-dz2303.html"
+    },
+    {
+        "id": "id_27_7339567419988730665",
+        "title": "Kỹ thuật Viễn th&#244;ng",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-vien-thong-dz2304.html"
+    },
+    {
+        "id": "id_28_-8933852830585840291",
+        "title": "Kỹ thuật cơ điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-dien-tu-dz22297.html"
+    },
+    {
+        "id": "id_29_5421641728593278148",
+        "title": "Kỹ thuật &#244; t&#244;",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-o-to-dz22298.html"
+    },
+    {
+        "id": "id_30_-2706161712349688731",
+        "title": "Kỹ thuật m&#225;y t&#237;nh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-may-tinh-dz22299.html"
+    },
+    {
+        "id": "id_31_-6305836761216560141",
+        "title": "Kỹ thuật điện - giảng dạy bằng tiếng Anh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-giang-day-bang-tieng-anh-dz22300.html"
+    },
+    {
+        "id": "id_32_-797489927159855199",
+        "title": "Kỹ thuật cơ kh&#237; - giảng dạy bằng tiếng Anh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-giang-day-bang-tieng-anh-dz22301.html"
+    },
+    {
+        "id": "id_33_5327946111187480958",
+        "title": "Kỹ thuật điều khiển v&#224; tự động h&#243;a",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dieu-khien-va-tdh-dz2298.html"
+    },
+    {
+        "id": "id_34_3703678309557272456",
+        "title": "Kỹ thuật cơ kh&#237;",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-dz2295.html"
+    },
+    {
+        "id": "id_35_-8746345424336624182",
+        "title": "Kỹ thuật điện tử",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-dien-tu-dz2296.html"
+    },
+    {
+        "id": "id_36_8965441556298537886",
+        "title": "Kỹ thuật cơ kh&#237; động lực",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/ky-thuat-co-khi-dong-luc-dz2294.html"
+    },
+    {
+        "id": "id_37_-3597014542144484938",
+        "title": "Kỹ thuật x&#226;y dựng",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-dao-tao-tu-xa-ky-thuat-xay-dung-dz15179.html"
+    },
+    {
+        "id": "id_38_-5823793400044238636",
+        "title": "Quản l&#253; c&#244;ng nghiệp",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-dao-tao-tu-xa-quan-ly-cong-nghiep-dz15178.html"
+    },
+    {
+        "id": "id_39_-5707614106771141222",
+        "title": "Kinh tế c&#244;ng nghiệp",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/chuong-trinh-dao-tao-tu-xa-nganh-kinh-te-cong-nghiep-dz15177.html"
+    },
+    {
+        "id": "id_40_-6650835761975739411",
+        "title": "Kỹ thuật m&#225;y t&#237;nh",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://tnut.edu.vn/quyet-dinh-ban-hanh-chuong-trinh-dao-tao-tu-xa-nganh-ky-thuat-may-tinh-dz18912.html"
+    },
+    {
+        "id": "id_41_5365165116869847525",
+        "title": "Giấy phép thiết lập trang thông tin điện tử tổng hợp số 95/GP-TTĐT do Sở Văn hóa, Thế thao và Du lịch cấp ngày 19/5/2026",
+        "category": "Thông báo chung",
+        "source": "Website",
+        "date": "19/8/1965",
+        "summary": "[Thông báo chung] Xem chi tiết tại bài viết gốc.",
+        "originalUrl": "https://drive.google.com/file/d/17qilG4sEY6tnrnf7YPQsmz4pIPB76qwd/view?usp=sharing"
     }
 ]
